@@ -10,31 +10,16 @@
 <?php // Example 26-3: setup.php
   require_once 'functions.php';
 
-  createTable('members',
-              'user VARCHAR(16),
-              pass VARCHAR(16),
-              INDEX(user(6))');
+  createTable("`employees`",
+	"`eno` bigint(4) NOT NULL AUTO_INCREMENT,
+	`ename` varchar(30) NOT NULL,
+	`zip` decimal(5,0) NOT NULL,
+	`hdate` date NOT NULL,
+	PRIMARY KEY (`eno`),
+	KEY `zip_idx` (`zip`),
+	CONSTRAINT `zip` FOREIGN KEY (`zip`) REFERENCES `zipcodes` (`zip`) ON DELETE NO ACTION ON UPDATE NO ACTION");
 
-  createTable('messages', 
-              'id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-              auth VARCHAR(16),
-              recip VARCHAR(16),
-              pm CHAR(1),
-              time INT UNSIGNED,
-              message VARCHAR(4096),
-              INDEX(auth(6)),
-              INDEX(recip(6))');
-
-  createTable('friends',
-              'user VARCHAR(16),
-              friend VARCHAR(16),
-              INDEX(user(6)),
-              INDEX(friend(6))');
-
-  createTable('profiles',
-              'user VARCHAR(16),
-              text VARCHAR(4096),
-              INDEX(user(6))');
+  insertTable("`employees`", "suuk", "233", "2016-02-23");
 ?>
 
     <br>...done.

@@ -57,7 +57,7 @@ class DatabaseHelper extends adb{
 	}
 	
 	//for employees
-	function addEmployee($name,$zip,$hdate){
+	/*function addEmployee($name,$zip,$hdate){
 
 	}
 
@@ -106,7 +106,7 @@ class DatabaseHelper extends adb{
 
 	function deletePart($id){
 		
-	}
+	} */
 
 }
 ?>

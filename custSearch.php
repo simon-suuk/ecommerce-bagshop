@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<title></title>
+</head>
 <body>
-
-<form action="search.php" method="POST">
-  Bag search:
+<form action="" method="GET">
+  Customer:
   <input type="search" name="search">
   <input type="submit">
 </form>
@@ -12,19 +14,15 @@
 include_once("DatabaseHelper.php");
 $obj=new DatabaseHelper();
 if (isset($_REQUEST['search'])) {
-	$result=$obj->search($_REQUEST['search']);
+	$parts='customers';
+	$name=$_REQUEST['search'];
+	$result=$obj->search($name, $parts);
 }
-
-if($result==false){
-	echo "The item you are searching for is not available";
-}
-else{
 	$row=$obj->fetch();
 	while($row){
-	echo $row["pname"];
+	echo $row["cname"];
 	$row=$obj->fetch();
 	}
-}
 ?>
 
 </body>

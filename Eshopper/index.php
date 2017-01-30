@@ -57,8 +57,8 @@ function showResult(str) {
     <div class="col-sm-6">
         <div class="contactinfo">
             <ul class="nav nav-pills">
-                <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                <li><a href="#"><i class="fa fa-phone"></i> +233541784079</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i> bagShop@gmail.com</a></li>
             </ul>
         </div>
     </div>
@@ -87,22 +87,23 @@ function showResult(str) {
         <div class="btn-group pull-right">
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                    USA
+                    GHANA
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Canada</a></li>
+                    <li><a href="#">NIGERIA</a></li>
                     <li><a href="#">UK</a></li>
+					<li><a href="#">CHINA</a></li>
                 </ul>
             </div>
 
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                    DOLLAR
+                    GHS
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Canadian Dollar</a></li>
+                    <li><a href="#">Dollar</a></li>
                     <li><a href="#">Pound</a></li>
                 </ul>
             </div>
@@ -137,7 +138,7 @@ function showResult(str) {
         </div>
         <div class="mainmenu pull-left">
             <ul class="nav navbar-nav collapse navbar-collapse">
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.php" class="active">Home</a></li>
                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                     <ul role="menu" class="sub-menu">
                         <li><a href="shop.html">Products</a></li>
@@ -175,13 +176,7 @@ function showResult(str) {
             $name=$_REQUEST['search'];
             $result=$obj->search($name, $parts);
     }
-
-       /*   CREATE A SEARCH PAGE AND CONNECT TO THIS SEARCH ELEMENT  
-       $row=$obj->fetch();
-        while($row){
-        echo $row["pname"];
-        $row=$obj->fetch();
-        }*/
+	
     ?>
 
         </div>
@@ -205,7 +200,7 @@ function showResult(str) {
         <div class="carousel-inner">
             <div class="item active">
                 <div class="col-sm-6">
-                    <h1><span>E</span>-SHOPPER</h1>
+                    <h1><span>Bag</span>SHOP</h1>
                     <h2>Free E-Commerce Template</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                     <button type="button" class="btn btn-default get">Get it now</button>
@@ -217,7 +212,7 @@ function showResult(str) {
             </div>
             <div class="item">
                 <div class="col-sm-6">
-                    <h1><span>E</span>-SHOPPER</h1>
+                    <h1><span>Bag</span>SHOP</h1>
                     <h2>100% Responsive Design</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                     <button type="button" class="btn btn-default get">Get it now</button>
@@ -230,13 +225,13 @@ function showResult(str) {
 
             <div class="item">
                 <div class="col-sm-6">
-                    <h1><span>E</span>-SHOPPER</h1>
-                    <h2>Free Ecommerce Template</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                    <h1><span>Bag</span>SHOP</h1>
+                    <h2>Browse through our catalog</h2>
+                    <p>We have a wide range of bags for the whole family </p>
                     <button type="button" class="btn btn-default get">Get it now</button>
                 </div>
                 <div class="col-sm-6">
-                    <img src="images/home/girl3.jpg" class="girl img-responsive" alt="" />
+                    <img src="images/home/family bags.jpg" class="girl img-responsive" alt="" />
                     <img src="images/home/pricing.png" class="pricing" alt="" />
                 </div>
             </div>
@@ -268,18 +263,18 @@ function showResult(str) {
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
                             <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                            Sportswear
+                            Sports Bags
                         </a>
                     </h4>
                 </div>
                 <div id="sportswear" class="panel-collapse collapse">
                     <div class="panel-body">
                         <ul>
-                            <li><a href="#">Nike </a></li>
-                            <li><a href="#">Under Armour </a></li>
-                            <li><a href="#">Adidas </a></li>
-                            <li><a href="#">Puma</a></li>
-                            <li><a href="#">ASICS </a></li>
+                            <li><a href="#">Golf Bags </a></li>
+                            <li><a href="#">Bowling Bags </a></li>
+                            <li><a href="#">Tennis Bags </a></li>
+                            <li><a href="#">Football Bags</a></li>
+                            <li><a href="#">Basketball </a></li>
                         </ul>
                     </div>
                 </div>
@@ -296,16 +291,10 @@ function showResult(str) {
                 <div id="mens" class="panel-collapse collapse">
                     <div class="panel-body">
                         <ul>
-                            <li><a href="#">Fendi</a></li>
-                            <li><a href="#">Guess</a></li>
-                            <li><a href="#">Valentino</a></li>
-                            <li><a href="#">Dior</a></li>
-                            <li><a href="#">Versace</a></li>
-                            <li><a href="#">Armani</a></li>
-                            <li><a href="#">Prada</a></li>
-                            <li><a href="#">Dolce and Gabbana</a></li>
-                            <li><a href="#">Chanel</a></li>
-                            <li><a href="#">Gucci</a></li>
+                            <li><a href="#">wallet</a></li>
+                            <li><a href="#">briefcase</a></li>
+                            <li><a href="#">suitcase</a></li>
+                            <li><a href="#">leather bags</a></li>
                         </ul>
                     </div>
                 </div>
@@ -316,18 +305,16 @@ function showResult(str) {
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordian" href="#womens">
                             <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                            Womens
+                            Women
                         </a>
                     </h4>
                 </div>
                 <div id="womens" class="panel-collapse collapse">
                     <div class="panel-body">
                         <ul>
-                            <li><a href="#">Fendi</a></li>
-                            <li><a href="#">Guess</a></li>
-                            <li><a href="#">Valentino</a></li>
-                            <li><a href="#">Dior</a></li>
-                            <li><a href="#">Versace</a></li>
+                            <li><a href="#">Hobo</a></li>
+                            <li><a href="#">Satchel</a></li>
+                            <li><a href="#">tote</a></li>
                         </ul>
                     </div>
                 </div>
@@ -339,25 +326,25 @@ function showResult(str) {
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Fashion</a></h4>
+                    <h4 class="panel-title"><a href="#">Travelling Bags</a></h4>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Households</a></h4>
+                    <h4 class="panel-title"><a href="#">School bags</a></h4>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Interiors</a></h4>
+                    <h4 class="panel-title"><a href="#">Purse</a></h4>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Clothing</a></h4>
+                    <h4 class="panel-title"><a href="#">Accessories</a></h4>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <!--div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title"><a href="#">Bags</a></h4>
                 </div>
@@ -388,7 +375,7 @@ function showResult(str) {
             <h2>Price Range</h2>
             <div class="well text-center">
                  <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-                 <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+                 <b class="pull-left">$ 50</b> <b class="pull-right">$ 300</b>
             </div>
         </div><!--/price-range-->
 

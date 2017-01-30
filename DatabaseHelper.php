@@ -5,7 +5,7 @@
 include_once("adb.php");
 
 /**
-*Users  class
+*DatabaseHelper  class
 */
 class DatabaseHelper extends adb{
 
@@ -16,7 +16,7 @@ class DatabaseHelper extends adb{
 	}
 	
 	function createTable($name, $query){
-		query("CREATE TABLE IF NOT EXISTS $name($query)");
+		$this->query("CREATE TABLE IF NOT EXISTS $name($query)");
 	}
 
 	/**
@@ -70,7 +70,7 @@ class DatabaseHelper extends adb{
 	}
 	
 	//for Order detail
-	function addDetails($onumber,$pnumber,quantity){
+	function addDetails($onumber,$pnumber,$quantity){
 
 	}
 
@@ -97,7 +97,7 @@ class DatabaseHelper extends adb{
 	
 	//for parts
 	function addPart($name,$qoh,$price,$olevel){
-
+	
 	}
 
 	function editPart($id, $column,$value){
@@ -106,6 +106,11 @@ class DatabaseHelper extends adb{
 
 	function deletePart($id){
 		
+	}
+	
+	function getAllParts(){
+		$strQuery="SELECT pno, pname, qno, price, bno, olevel FROM bagshop.parts";
+		return $this-> query($strQuery);
 	}
 
 }

@@ -122,5 +122,18 @@ class DatabaseHelper extends adb{
          $this->query("insert into odetails(ono,pno,qty) values($partid,$orderid,$qty)");		 
 		 
 	 }
+	 //search zip
+	 function searchZip(){
+		return $this->query("select * from zipcodes");
+		 
+	 }
+	 
+	 function fetchZip(){
+		 $res = $this->fetch();
+		// print($res['city']);
+		 return $res;
+		
+	 }
+	 
 }
 ?>

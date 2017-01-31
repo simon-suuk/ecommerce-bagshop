@@ -49,6 +49,9 @@ $creator->createTable('orders',
 	FOREIGN KEY (cno) REFERENCES customers (cno),
 	FOREIGN KEY (eno) REFERENCES employees (eno)'); 
 	$creator->addOrderDetails(1,1,5);
+	$creator->searchZip();
+	$creator->fetchZip();
+	
 ?>
 
     <br>...done.

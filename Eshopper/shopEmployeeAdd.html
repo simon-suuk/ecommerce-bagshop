@@ -17,8 +17,8 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->   
-<script src="jquery-1.12.2.js"></script>
-<script type="text/javascript"  src="tasks.js"></script>    
+<script src="js/jquery-1.12.2.js"></script>
+<script type="text/javascript"  src="js/tasks.js"></script>    
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -28,12 +28,19 @@
 
 <style>
 .row{
-margin-bottom:10px;
+margin-bottom:8px;
 margin-right:3px;
 
 }
 .column{
 display:inline-block;
+}
+
+.rowlabels{
+margin-bottom:10px;
+margin-right:14px;
+margin-top:10px;
+font-size:16px;
 }
 </style>
 
@@ -305,31 +312,57 @@ display:inline-block;
 					</div>
 				</div>
 				
-				
-									
-									<form action="customerAdd.html">
-                    <h1>Add customer</h1>
+				<form action="shopEmployeeAdd.html">
+<h1>Add Employee</h1>
+<!--
+<div class="row">Name: <input type="text"  name="name" placeholder="Enter your full name"></div>
+
+<div class="row">Street: <input type="text"  name="street" placeholder="Enter your street address"></div>
+<div class="row">Zip: <input type="text" value="" name="zip" placeholder="Enter your zip number"></div>
+<div class="row">Phone number: <input type="text" value="" name="street" placeholder="Enter your phone number"></div>
+<div class="row"><input type="submit" value ="Add" onSubmit=""></div> -->
+<div class="column">
+<div class="row">Name: </div>
+<div class="row">Zip: </div>
+<div class="row">Hired Date </div>
 
 
+</div>
+<div class="column">
+<div class="row"> <input type="text" id="EName" name="employeeName" placeholder="Enter name"></div>
+ <div class="rowlabels" style="">Phone:  </div>
 
-                    <div class="column">
-                  <div class="row"> </div>
-                 <div class="row"> </div>
-               <div class="row"></div>
-              <div class="row"> </div>
+					   </div>
+					<div class="column">
+					<div class="row"   >  <input type="text" id="CName" name="CName" placeholder="Enter your full name"></div>
 
-                   </div>
-				<div class="column">
-				<div class="row"> Name: <input type="text" id="CName" name="CName" placeholder="Enter your full name"></div>
+					<div class="row"> <input type="text"  id="CStreet" name="CStreet" placeholder="Enter your street address"></div>
+					 <div class="row">
+					    <select style="display:inline" name="CZip" id="CZip">				
+					<?php
+					include("DatabaseHelper.php");
+					$dbhelp = new DatabaseHelper();
+					$dbhelp->connect();
+					$dbhelp->searchZip();
+					while($result=$dbhelp->fetchZip()){
+					echo"<option value={$result['zip']}>";
+					echo $result['city'];
+					echo"</option>";
+					}	
+					?>
+					</select>
+					<!--- //echo "<input type="text" value="" id="CZip" name="CZip" placeholder="Enter your zip number">";-->
+					</div>
+<div class="row"><input type="text" id="EHire" name="employeeHire" placeholder="Enter Date of Hiring"></div>
 
-				<div class="row">Street: <input type="text"  id="CStreet" name="CStreet" placeholder="Enter your street address"></div>
-				<div class="row">Zip:   <input type="text" value="" id="CZip" name="CZip" placeholder="Enter your zip number"></div>
-				<div class="row">Phone:  <input type="text" value="" id="CPhone"  name="CPhone" placeholder="Enter your phone number"></div>
-				</div>
-				<div><span ><input  type="submit" value="Add" onClick="customerSave()" ><span></div>
+
+</div>
+<div><span ><input  type="submit" value="Add" onClick="employeeSave()"><span></div>
 
 </form>
-								
+
+									
+									
 		</div>
 	</section>
 	

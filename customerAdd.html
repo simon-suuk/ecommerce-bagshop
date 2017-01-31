@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head><title>Add Customer</title>
-<script type="text/javascript"  src="addJavaScript.js"></script>
+<script src="js/jquery-1.12.2.js"></script>
+<script type="js/text/javascript"  src="js/tasks.js"></script>
 </head>
 <style>
 .row{
@@ -14,7 +15,7 @@ display:inline-block;
 }
 </style>
 <body>
-<form action="customerAdd.php">
+<form action="customerAdd.html">
 <h1>Add customer</h1>
 
 
@@ -27,13 +28,13 @@ display:inline-block;
 
 </div>
 <div class="column">
-<div class="row"> <input type="text"  name="customerName" placeholder="Enter your full name"></div>
+<div class="row"> <input type="text" id="CName" name="CName" placeholder="Enter your full name"></div>
 
-<div class="row"><input type="text"  id="customerStreet" placeholder="Enter your street address"></div>
-<div class="row"> <input type="text" value="" id="customerZip" placeholder="Enter your zip number"></div>
-<div class="row"> <input type="text" value=""id="customerPhone" placeholder="Enter your phone number"></div>
+<div class="row"><input type="text"  id="CStreet" name="CStreet" placeholder="Enter your street address"></div>
+<div class="row"> <input type="text" value="" id="CZip" name="CZip" placeholder="Enter your zip number"></div>
+<div class="row"> <input type="text" value="" id="CPhone"  name="CPhone" placeholder="Enter your phone number"></div>
 </div>
-<div><span ><input  type="submit" value="Add" onSubmit="addCustomer()"><span></div>
+<div><span ><input  type="submit" value="Add" onClick="customerSave()" ><span></div>
 
 </form>
 

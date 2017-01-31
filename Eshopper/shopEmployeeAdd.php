@@ -17,8 +17,8 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->   
-<script src="jquery-1.12.2.js"></script>
-<script type="text/javascript"  src="tasks.js"></script>    
+<script src="js/jquery-1.12.2.js"></script>
+<script type="text/javascript"  src="js/tasks.js"></script>    
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -28,12 +28,34 @@
 
 <style>
 .row{
-margin-bottom:10px;
+margin-bottom:15px;
 margin-right:3px;
 
 }
 .column{
 display:inline-block;
+}
+
+.rowlabels{
+margin-bottom:25px;
+margin-right:26px;
+margin-top:10px;
+font-size:16px;
+}
+
+.submit{
+	background-color:orange;
+	color:white;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	width: 250px;
+}
+
+
+.form{
+	margin-left:40px;
 }
 </style>
 
@@ -126,13 +148,12 @@ display:inline-block;
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">Home</a></li>
-								<li class="dropdown"><a href="#" class="active">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html" class="active">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
+								<li class="dropdown"><a href="#" class="active">Admin Actions<i class="fa fa-angle-down"></i></a>
+                                   <ul role="menu" class="sub-menu">
+                                        <li><a href="shopCustomerAdd.php" >Add customer</a></li>
+										<li><a href="shopEmployeeAdd.php"  class="active">Add employee</a></li> 
+										<li><a href="shopPartsadd.php" >Add part</a></li> 
+										
                                     </ul>
                                 </li> 
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
@@ -304,32 +325,51 @@ display:inline-block;
 						
 					</div>
 				</div>
-				
-				
-									
-									<form action="customerAdd.html">
-                    <h1>Add customer</h1>
+				<div class="form_layout">
+				<form class="col-sm-8" action="shopEmployeeAdd.php">
+<h1>Add Employee</h1>
+<!--
+<div class="row">Name: <input type="text"  name="name" placeholder="Enter your full name"></div>
+
+<div class="row">Street: <input type="text"  name="street" placeholder="Enter your street address"></div>
+<div class="row">Zip: <input type="text" value="" name="zip" placeholder="Enter your zip number"></div>
+<div class="row">Phone number: <input type="text" value="" name="street" placeholder="Enter your phone number"></div>
+<div class="row"><input type="submit" value ="Add" onSubmit=""></div> -->
+<div class="column">
+<div class="rowlabels">Name: </div>
+<div class="rowlabes">Hired Date </div>
+<div class="rowlabels"> Country</div>
 
 
+</div>
+<div class="column">
+<div class="row"> <input class="height" type="text" id="EName" name="employeeName" placeholder="Enter name"></div>
 
-                    <div class="column">
-                  <div class="row"> </div>
-                 <div class="row"> </div>
-               <div class="row"></div>
-              <div class="row"> </div>
+<div class="row"><input  class="height" type="date" id="EHire" name="employeeHire" placeholder="Enter Date of Hiring"></div>
 
-                   </div>
-				<div class="column">
-				<div class="row"> Name: <input type="text" id="CName" name="CName" placeholder="Enter your full name"></div>
-
-				<div class="row">Street: <input type="text"  id="CStreet" name="CStreet" placeholder="Enter your street address"></div>
-				<div class="row">Zip:   <input type="text" value="" id="CZip" name="CZip" placeholder="Enter your zip number"></div>
-				<div class="row">Phone:  <input type="text" value="" id="CPhone"  name="CPhone" placeholder="Enter your phone number"></div>
-				</div>
-				<div><span ><input  type="submit" value="Add" onClick="customerSave()" ><span></div>
+ <div class="row">
+					    <select style="display:inline" name="EZip" id="EZip" class="height" >				
+					<?php
+					include("DatabaseHelper.php");
+					$dbhelp = new DatabaseHelper();
+					$dbhelp->connect();
+					$dbhelp->searchZip();
+					while($result=$dbhelp->fetchZip()){
+					echo"<option value={$result['zip']}>";
+					echo $result['city'];
+					echo"</option>";
+					}	
+					?>
+					</select>
+					<!--- //echo "<input type="text" value="" id="CZip" name="CZip" placeholder="Enter your zip number">";-->
+					</div>
+</div>
+<div><span ><input  class="submit" type="submit" value="Add" onClick="employeeSave()"><span></div>
 
 </form>
-								
+</div>
+									
+									
 		</div>
 	</section>
 	

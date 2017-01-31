@@ -17,8 +17,8 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->   
-<script src="jquery-1.12.2.js"></script>
-<script type="text/javascript"  src="tasks.js"></script>    
+<script src="js/jquery-1.12.2.js"></script>
+<script type="text/javascript"  src="js/tasks.js"></script>    
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -28,13 +28,33 @@
 
 <style>
 .row{
-margin-bottom:10px;
-margin-right:3px;
-
+margin-bottom:8px;
+margin-right:12px;
+margin-bottom:24px;
 }
 .column{
 display:inline-block;
 }
+
+.rowlabels{
+margin-bottom:24px;
+margin-right:25px;
+margin-top:10px;
+font-size:16px;
+}
+.height{
+	height:25px;
+}
+.submit{
+	background-color:orange;
+	color:white;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	width: 300px;
+}
+
 </style>
 
 <body>
@@ -126,13 +146,12 @@ display:inline-block;
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">Home</a></li>
-								<li class="dropdown"><a href="#" class="active">Shop<i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="#" class="active">Admin Add<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html" class="active">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
+                                        <li><a href="shopCustomerAdd.php" >Add customer</a></li>
+										<li><a href="shopEmployeeAdd.php">Add employee</a></li> 
+										<li><a href="shopPartsadd.php" class="active">Add part</a></li> 
+										
                                     </ul>
                                 </li> 
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
@@ -305,31 +324,30 @@ display:inline-block;
 					</div>
 				</div>
 				
-				
-									
-									<form action="customerAdd.html">
-                    <h1>Add customer</h1>
+				<form class="col-sm-8" action="shopPartsadd.html">
+<h1>Add Part</h1>
+
+<div class="column">
+<div class="rowlabels">Name of the part: </div>
+<div class="rowlabels">Quantity On Hand: </div>
+<div class="rowlabels">Price: </div>
+<div class="rowlabels">Order level: </div>
 
 
+</div>
+<div class="column">
+<div class="row"> <input class="height" type="text" id="partName" name="partName" placeholder="Enter part name"></div>
+<div class="row"> <input class="height" type="text" id="partZip"  name="partZip" placeholder="Enter quantity"></div>
+<div class="row"><input class="height" type="text" id="partPrice" name="partPrice" placeholder="Enter Price"></div>
+<div class="row"><input class="height" type="text" id="partLevel" name="partLevel" placeholder="Enter Order level"></div>
 
-                    <div class="column">
-                  <div class="row"> </div>
-                 <div class="row"> </div>
-               <div class="row"></div>
-              <div class="row"> </div>
-
-                   </div>
-				<div class="column">
-				<div class="row"> Name: <input type="text" id="CName" name="CName" placeholder="Enter your full name"></div>
-
-				<div class="row">Street: <input type="text"  id="CStreet" name="CStreet" placeholder="Enter your street address"></div>
-				<div class="row">Zip:   <input type="text" value="" id="CZip" name="CZip" placeholder="Enter your zip number"></div>
-				<div class="row">Phone:  <input type="text" value="" id="CPhone"  name="CPhone" placeholder="Enter your phone number"></div>
-				</div>
-				<div><span ><input  type="submit" value="Add" onClick="customerSave()" ><span></div>
+</div>
+<div><span ><input class="submit" type="submit" value="Add" onClick="partSave()"><span></div>
 
 </form>
-								
+
+									
+									
 		</div>
 	</section>
 	

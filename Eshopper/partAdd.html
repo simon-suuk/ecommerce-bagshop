@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><title>Add Part</title>
-<script src="jquery-1.12.2.js"></script>
-<script src="tasks.js"></script>
-</head>
+<head><title>Add Part</title></head>
 <style>
 .row{
 margin-bottom:10px;
@@ -15,7 +12,7 @@ display:inline-block;
 }
 </style>
 <body>
-<form action="partAdd.html">
+<form action="partAdd.php">
 <h1>Add Part</h1>
 <!--
 <div class="row">Name: <input type="text"  name="name" placeholder="Enter your full name"></div>
@@ -33,13 +30,13 @@ display:inline-block;
 
 </div>
 <div class="column">
-<div class="row"> <input type="text" id="partName" name="partName" placeholder="Enter part name"></div>
-<div class="row"> <input type="text" id="partZip"  name="partZip" placeholder="Enter quantity"></div>
-<div class="row"><input type="text" id="partPrice" name="partPrice" placeholder="Enter Price"></div>
-<div class="row"><input type="text" id="partLevel" name="partLevel" placeholder="Enter Order level"></div>
+<div class="row"> <input type="text"  name="name" placeholder="Enter part name"></div>
+<div class="row"> <input type="text" value="" name="zip" placeholder="Enter quantity"></div>
+<div class="row"><input type="text"  name="hire" placeholder="Enter Price"></div>
+<div class="row"><input type="text"  name="hire" placeholder="Enter Order level"></div>
 
 </div>
-<div><span ><input  type="submit" value="Add" onClick="partSave()"><span></div>
+<div><span ><input  type="submit" value="Add" onSubmit=""><span></div>
 
 </form>
 

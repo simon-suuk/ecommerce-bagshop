@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Shop | E-Shopper</title>
+    <title>Admin | BagShop</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -24,6 +24,30 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+	
+	<script>
+         function showResult(str) {
+           if (str.length==0) { 
+             document.getElementById("livesearch").innerHTML="";
+             document.getElementById("livesearch").style.border="0px";
+             return;
+           }
+           if (window.XMLHttpRequest) {
+             // code for IE7+, Firefox, Chrome, Opera, Safari
+             xmlhttp=new XMLHttpRequest();
+           } else {  // code for IE6, IE5
+             xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+           }
+           xmlhttp.onreadystatechange=function() {
+             if (this.readyState==4 && this.status==200) {
+               document.getElementById("livesearch").innerHTML=this.responseText;
+               document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+             }
+           }
+           xmlhttp.open("GET","w3schoolsAJAX.php?q="+str,true);
+           xmlhttp.send();
+         }
+      </script>
 </head><!--/head-->
 
 <style>
@@ -66,8 +90,8 @@ font-size:16px;
 					<div class="col-sm-6 ">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href=""><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-								<li><a href=""><i class="fa fa-envelope"></i> info@domain.com</a></li>
+								<li><a href=""><i class="fa fa-phone"></i> +233541784079</a></li>
+								<li><a href=""><i class="fa fa-envelope"></i> BagShop@domain.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -91,7 +115,7 @@ font-size:16px;
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+							<a href="index.php"><img src="images/home/logo.png" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right">
 							<div class="btn-group">
@@ -146,7 +170,7 @@ font-size:16px;
 						</div>
 						<div class="mainmenu pull-left">
 								<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html">Home</a></li>
+								<li><a href="index.php">Home</a></li>
 								<li class="dropdown"><a href="#" class>Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html" >Products</a></li>
@@ -179,19 +203,26 @@ font-size:16px;
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+							<form>
+                           <input type="text" size="30" onkeyup="showResult(this.value)">
+                           <div id="livesearch"></div>
+                        </form>
+                        <?php
+                           include_once("DatabaseHelper.php");
+                           $obj=new DatabaseHelper();
+                           if (isset($_REQUEST['search'])) {
+                               $parts='parts';
+                               $name=$_REQUEST['search'];
+                               $result=$obj->search($name, $parts);
+                           }
+                           
+                           ?>
 						</div>
 					</div>
 				</div>
 				</div>
 			</div>
 	</header>
-	
-	<section id="advertisement">
-		<div class="container">
-			<img src="images/shop/advertisement.jpg" alt="" />
-		</div>
-	</section>
 	
 	<section>
 		<div class="container">
@@ -205,106 +236,87 @@ font-size:16px;
 									<h4 class="panel-title">
 										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
 											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Sportswear
-										</a>
-									</h4>
-								</div>
-								<div id="sportswear" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="">Nike </a></li>
-											<li><a href="">Under Armour </a></li>
-											<li><a href="">Adidas </a></li>
-											<li><a href="">Puma</a></li>
-											<li><a href="">ASICS </a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#mens">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Mens
-										</a>
-									</h4>
-								</div>
-								<div id="mens" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="">Fendi</a></li>
-											<li><a href="">Guess</a></li>
-											<li><a href="">Valentino</a></li>
-											<li><a href="">Dior</a></li>
-											<li><a href="">Versace</a></li>
-											<li><a href="">Armani</a></li>
-											<li><a href="">Prada</a></li>
-											<li><a href="">Dolce and Gabbana</a></li>
-											<li><a href="">Chanel</a></li>
-											<li><a href="">Gucci</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#womens">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Womens
-										</a>
-									</h4>
-								</div>
-								<div id="womens" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="">Fendi</a></li>
-											<li><a href="">Guess</a></li>
-											<li><a href="">Valentino</a></li>
-											<li><a href="">Dior</a></li>
-											<li><a href="">Versace</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Kids</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Fashion</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Households</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Interiors</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Clothing</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Bags</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Shoes</a></h4>
-								</div>
-							</div>
-						</div><!--/category-productsr-->
+                              Sports Bags
+                              </a>
+                           </h4>
+                        </div>
+                        <div id="sportswear" class="panel-collapse collapse">
+                           <div class="panel-body">
+                              <ul>
+                                 <li><a href="#">Golf Bags </a></li>
+                                 <li><a href="#">Bowling Bags </a></li>
+                                 <li><a href="#">Tennis Bags </a></li>
+                                 <li><a href="#">Football Bags</a></li>
+                                 <li><a href="#">Basketball </a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordian" href="#mens">
+                              <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                              Mens
+                              </a>
+                           </h4>
+                        </div>
+                        <div id="mens" class="panel-collapse collapse">
+                           <div class="panel-body">
+                              <ul>
+                                 <li><a href="#">wallet</a></li>
+                                 <li><a href="#">briefcase</a></li>
+                                 <li><a href="#">suitcase</a></li>
+                                 <li><a href="#">leather bags</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordian" href="#womens">
+                              <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                              Women
+                              </a>
+                           </h4>
+                        </div>
+                        <div id="womens" class="panel-collapse collapse">
+                           <div class="panel-body">
+                              <ul>
+                                 <li><a href="#">Hobo</a></li>
+                                 <li><a href="#">Satchel</a></li>
+                                 <li><a href="#">tote</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <h4 class="panel-title"><a href="#">Kids</a></h4>
+                        </div>
+                     </div>
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <h4 class="panel-title"><a href="#">Travelling Bags</a></h4>
+                        </div>
+                     </div>
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <h4 class="panel-title"><a href="#">School bags</a></h4>
+                        </div>
+                     </div>
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <h4 class="panel-title"><a href="#">Purse</a></h4>
+                        </div>
+                     </div>
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <h4 class="panel-title"><a href="#">Accessories</a></h4>
+                        </div>
+                     </div>
+					 </div><!--/category-productsr-->
 					
 						<div class="brands_products"><!--brands_products-->
 							<h2>Brands</h2>
@@ -325,7 +337,7 @@ font-size:16px;
 							<h2>Price Range</h2>
 							<div class="well">
 								 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-								 <b>$ 0</b> <b class="pull-right">$ 600</b>
+								 <b>$ 50</b> <b class="pull-right">$ 300</b>
 							</div>
 						</div><!--/price-range-->
 						
@@ -365,7 +377,7 @@ font-size:16px;
 	
 	<footer id="footer"><!--Footer-->
 		<div class="footer-top">
-			<div class="container">
+			<!--div class="container">
 				<div class="row">
 					<div class="col-sm-2">
 						<div class="companyinfo">
@@ -441,7 +453,7 @@ font-size:16px;
 						</div>
 					</div>
 				</div>
-			</div>
+			</div-->
 		</div>
 		
 		<div class="footer-widget">
@@ -461,7 +473,7 @@ font-size:16px;
 					</div>
 					<div class="col-sm-2">
 						<div class="single-widget">
-							<h2>Quock Shop</h2>
+							<h2>Quick Shop</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="">T-Shirt</a></li>
 								<li><a href="">Mens</a></li>
@@ -485,7 +497,7 @@ font-size:16px;
 					</div>
 					<div class="col-sm-2">
 						<div class="single-widget">
-							<h2>About Shopper</h2>
+							<h2>About BagShop</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="">Company Information</a></li>
 								<li><a href="">Careers</a></li>
@@ -497,7 +509,7 @@ font-size:16px;
 					</div>
 					<div class="col-sm-3 col-sm-offset-1">
 						<div class="single-widget">
-							<h2>About Shopper</h2>
+							<h2>About BagShop</h2>
 							<form action="#" class="searchform">
 								<input type="text" placeholder="Your email address" />
 								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
@@ -513,7 +525,7 @@ font-size:16px;
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2013 E-Shopper. All rights reserved.</p>
+					<p class="pull-left">Copyright © 2017 BagShop Inc. All rights reserved.</p>
 					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
 				</div>
 			</div>

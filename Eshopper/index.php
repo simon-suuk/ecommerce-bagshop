@@ -152,13 +152,20 @@
                               </ul>
                            </li>
                            <li class="dropdown">
-                              <a href="#">Admin<i class="fa fa-angle-down"></i></a>
+                              <a href="#">Blog<i class="fa fa-angle-down"></i></a>
                               <ul role="menu" class="sub-menu">
                                  <li><a href="blog.html">Blog List</a></li>
                                  <li><a href="blog-single.html">Blog Single</a></li>
                               </ul>
                            </li>
-                           <li><a href="404.html">404</a></li>
+                           <li class="dropdown"><a href="#" class="active">Admin<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="shopCustomerAdd.php" class="active" >Add customer</a></li>
+										<li><a href="shopEmployeeAdd.php">Add employee</a></li> 
+										<li><a href="shopPartsadd.php" >Add part</a></li> 
+										
+                                    </ul>
+                                </li>
                            <li><a href="contact-us.html">Contact</a></li>
                         </ul>
                      </div>

@@ -12,6 +12,12 @@ include_once('DatabaseHelper.php');
 
 $dbh = new DatabaseHelper();
 
+/*$dbh->dbCleanUp('`zipcodes`');
+$dbh->dbCleanUp('`customers`');
+$dbh->dbCleanUp('`employees`');
+$dbh->dbCleanUp('bags');
+$dbh->dbCleanUp('parts');*/
+
 $dbh->createTable('`zipcodes`',
 	'`zip` decimal(5,0) NOT NULL,
 	`city` varchar(30) NOT NULL,

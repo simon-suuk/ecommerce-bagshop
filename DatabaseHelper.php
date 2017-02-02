@@ -15,6 +15,10 @@ class DatabaseHelper extends adb{
 	function __construct(){
 	}
 	
+	function dbCleanUp($table){
+		$this->query("DROP TABLE IF EXISTS $table");
+	} 
+	
 	function createTable($name, $query){
 		$this->query("CREATE TABLE IF NOT EXISTS $name($query)");
 	}
@@ -83,8 +87,30 @@ class DatabaseHelper extends adb{
 	}
 	
 	//for  Order
-	function addOrder($cno,$eno,$received,$shipped){
-	
+	function addOrder($cno,$eno,$received,$shipped,$pno,$qty){
+		//orders table cno, eno, received, shipped
+		$orderQuery="INSERT INTO orders SET
+					cno = '$cno',
+					eno = '$eno',
+					received = '$received',
+					shipped = '$shipped' ";
+		$this->query($orderQuery);			
+		
+		$ono = mysqli_insert_id($this->db);
+		//$ono = $this->insert_id;
+		
+		//odetails table ono, pno, qty
+		$detailsQuery="INSERT INTO odetails SET
+					ono = '$ono',
+					pno = '$pno',
+					qty = '$qty' ";
+		$this->query($detailsQuery);		
+		
+		//parts table set qno = qno-qty
+		$partsQuery = "UPDATE parts SET
+						qno = qno - '$qty' 
+						WHERE pno = '$pno' ";
+		return $this->query($partsQuery);
 	}
 
 	function editOrder($id,$column,$value){

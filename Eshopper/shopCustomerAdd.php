@@ -17,8 +17,8 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->   
-<script src="jquery-1.12.2.js"></script>
-<script type="text/javascript"  src="tasks.js"></script>    
+<script src="js/jquery-1.12.2.js"></script>
+<script type="text/javascript"  src="js/tasks.js"></script>    
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -28,12 +28,38 @@
 
 <style>
 .row{
-margin-bottom:10px;
+margin-bottom:20px;
 margin-right:3px;
 
 }
 .column{
 display:inline-block;
+}
+
+.rowlabels{
+margin-bottom:25px;
+margin-right:14px;
+margin-top:10px;
+font-size:16px;
+}
+
+.submit{
+	background-color:orange;
+	color:white;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	width: 300px;
+}
+
+input{
+	width: 250px;
+	
+}
+
+form{
+	margin-left:40px;
 }
 </style>
 
@@ -126,7 +152,7 @@ display:inline-block;
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">Home</a></li>
-								<li class="dropdown"><a href="#" class="active">Shop<i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="#" >Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html" class="active">Products</a></li>
 										<li><a href="product-details.html">Product Details</a></li> 
@@ -135,13 +161,24 @@ display:inline-block;
 										<li><a href="login.html">Login</a></li> 
                                     </ul>
                                 </li> 
+								
+								
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
 										<li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
-                                </li> 
-								<li><a href="404.html">404</a></li>
+                                </li>
+
+                                 <li class="dropdown"><a href="#" class="active">Admin<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="shopCustomerAdd.php" class="active" >Add customer</a></li>
+										<li><a href="shopEmployeeAdd.php">Add employee</a></li> 
+										<li><a href="shopPartsadd.php" >Add part</a></li> 
+										
+                                    </ul>
+                                </li> 								
+								
 								<li><a href="contact-us.html">Contact</a></li>
 							</ul>
 						</div>
@@ -161,6 +198,14 @@ display:inline-block;
 			<img src="images/shop/advertisement.jpg" alt="" />
 		</div>
 	</section>
+	
+	
+	 
+	
+	
+	
+	
+	
 	
 	<section>
 		<div class="container">
@@ -305,34 +350,49 @@ display:inline-block;
 					</div>
 				</div>
 				
-				
-									
-									<form action="customerAdd.html">
-                    <h1>Add customer</h1>
+			
+				<form action="shopCustomerAdd.php">
+						<h1>Add customer</h1>
 
 
 
-                    <div class="column">
-                  <div class="row"> </div>
-                 <div class="row"> </div>
-               <div class="row"></div>
-              <div class="row"> </div>
+						<div class="column">
+					  <div class="rowlabels" style="" > Name:</div>
+					 <div class="rowlabels" style="">Street: </div>
+				   <div class="rowlabels" style="">Region:</div>
+				  <div class="rowlabels" style="">Phone:  </div>
 
-                   </div>
-				<div class="column">
-				<div class="row"> Name: <input type="text" id="CName" name="CName" placeholder="Enter your full name"></div>
+					   </div>
+					<div class="column">
+					<div class="row"   >  <input type="text" id="CName" name="CName" placeholder="Enter your full name"></div>
 
-				<div class="row">Street: <input type="text"  id="CStreet" name="CStreet" placeholder="Enter your street address"></div>
-				<div class="row">Zip:   <input type="text" value="" id="CZip" name="CZip" placeholder="Enter your zip number"></div>
-				<div class="row">Phone:  <input type="text" value="" id="CPhone"  name="CPhone" placeholder="Enter your phone number"></div>
-				</div>
-				<div><span ><input  type="submit" value="Add" onClick="customerSave()" ><span></div>
+					<div class="row"> <input type="text"  id="CStreet" name="CStreet" placeholder="Enter your street address"></div>
+					 <div class="row">
+					    <select style="display:inline" name="CZip" id="CZip">				
+					<?php
+					include("DatabaseHelper.php");
+					$dbhelp = new DatabaseHelper();
+					$dbhelp->connect();
+					$dbhelp->searchZip();
+					while($result=$dbhelp->fetchZip()){
+					echo"<option value={$result['zip']}>";
+					echo $result['city'];
+					echo"</option>";
+					}	
+					?>
+					</select>
+					<!--- //echo "<input type="text" value="" id="CZip" name="CZip" placeholder="Enter your zip number">";-->
+					</div>
+					<div class="row"> <input type="number" value="" id="CPhone"  name="CPhone" placeholder="Enter your phone number"></div>
+					</div>
+					<div><span ><input class="submit" type="submit" value="Add" onClick="customerSave()" ><span></div>
 
-</form>
+					 </form>					
+		             
 								
 		</div>
 	</section>
-	
+	           </div></div>
 	<footer id="footer"><!--Footer-->
 		<div class="footer-top">
 			<div class="container">

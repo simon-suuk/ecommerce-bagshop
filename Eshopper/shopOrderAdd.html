@@ -17,8 +17,8 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->   
-<script src="jquery-1.12.2.js"></script>
-<script type="text/javascript"  src="tasks.js"></script>    
+<script src="js/jquery-1.12.2.js"></script>
+<script type="text/javascript"  src="js/tasks.js"></script>    
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -127,12 +127,11 @@ display:inline-block;
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">Home</a></li>
 								<li class="dropdown"><a href="#" class="active">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html" class="active">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
+                                   <ul role="menu" class="sub-menu">
+                                        <li><a href="shopCustomerAdd.php" >Add customer</a></li>
+										<li><a href="shopEmployeeAdd.php">Add employee</a></li> 
+										<li><a href="shopPartsadd.php" >Add part</a></li> 
+										
                                     </ul>
                                 </li> 
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
@@ -305,31 +304,38 @@ display:inline-block;
 					</div>
 				</div>
 				
-				
-									
-									<form action="customerAdd.html">
-                    <h1>Add customer</h1>
+				<form action="shopOrderAdd.html">
 
 
+<h1>Add Order</h1>
+<!--
+<div class="row">Name: <input type="text"  name="name" placeholder="Enter your full name"></div>
 
-                    <div class="column">
-                  <div class="row"> </div>
-                 <div class="row"> </div>
-               <div class="row"></div>
-              <div class="row"> </div>
+<div class="row">Street: <input type="text"  name="street" placeholder="Enter your street address"></div>
+<div class="row">Zip: <input type="text" value="" name="zip" placeholder="Enter your zip number"></div>
+<div class="row">Phone number: <input type="text" value="" name="street" placeholder="Enter your phone number"></div>
+<div class="row"><input type="submit" value ="Add" onSubmit=""></div> -->
+<div class="column">
+<div class="row">Customer Number: </div>
+<div class="row">Employee Number: </div>
+<div class="row">Received: </div>
+<div class="row">Shipped: </div>
 
-                   </div>
-				<div class="column">
-				<div class="row"> Name: <input type="text" id="CName" name="CName" placeholder="Enter your full name"></div>
 
-				<div class="row">Street: <input type="text"  id="CStreet" name="CStreet" placeholder="Enter your street address"></div>
-				<div class="row">Zip:   <input type="text" value="" id="CZip" name="CZip" placeholder="Enter your zip number"></div>
-				<div class="row">Phone:  <input type="text" value="" id="CPhone"  name="CPhone" placeholder="Enter your phone number"></div>
-				</div>
-				<div><span ><input  type="submit" value="Add" onClick="customerSave()" ><span></div>
+</div>
+<div class="column">
+<div class="row"> <input type="text"  id="Cid" name="Cid" placeholder="Enter Customer Number"></div>
+<div class="row"><input type="text" id="Eid" name="Eid" placeholder="Enter Employee Number"></div>
+<div class="row"><input type="text"  name="Received" id="Received" placeholder="Enter Received Date"></div>
+<div class="row"><input type="text"  name="Shipped" id="Shipped" placeholder="Enter Shipped Date"></div>
+
+</div>
+<div><span ><input  type="submit" value="Add" onClick="orderSave()"><span></div>
 
 </form>
-								
+
+									
+									
 		</div>
 	</section>
 	

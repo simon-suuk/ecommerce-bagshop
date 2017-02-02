@@ -2,21 +2,23 @@
 
 /**
 */
-include_once("adb.php");
+require_once("adb.php");
 
 /**
 *Users  class
 */
 class DatabaseHelper extends adb{
+	
 
 	/**
 	*constructor
 	*/
 	function __construct(){
+		
 	}
 	
 	function createTable($name, $query){
-		query("CREATE TABLE IF NOT EXISTS $name($query)");
+		$this->query("CREATE TABLE IF NOT EXISTS $name($query)");
 	}
 
 	/**
@@ -40,7 +42,8 @@ class DatabaseHelper extends adb{
 	
 	//for customers
 	function addCustomer($name,$street,$zip,$phone){
-		query("insert into customers(cname,street,zip,phone) values('$name','$street',$zip,'$phone');");
+		echo"insert into customers(cname,street,zip,phone) values('$name','$street',$zip,'$phone')";
+		$this->query("insert into customers(cname,street,zip,phone) values('$name','$street',$zip,'$phone');");
 		echo "Customer '$name' was created";
 	}
 	
@@ -57,8 +60,11 @@ class DatabaseHelper extends adb{
 	}
 	
 	//for employees
-	/*function addEmployee($name,$zip,$hdate){
+	function addEmployee($name,$zip,$hdate){
+		
+ $this->query("insert into employees(ename,zip,hdate) values('$name',$zip,'$hdate');");
 
+		echo "Customer '$name' was created";
 	}
 
 	function editEmployee($column,$id,$value){
@@ -70,7 +76,7 @@ class DatabaseHelper extends adb{
 	}
 	
 	//for Order detail
-	function addDetails($onumber,$pnumber,quantity){
+	function addDetails($onumber,$pnumber,$quantity){
 
 	}
 
@@ -84,7 +90,9 @@ class DatabaseHelper extends adb{
 	
 	//for  Order
 	function addOrder($cno,$eno,$received,$shipped){
-	
+	echo"insert into orders(cno,eno,received,shipped) values($cno,$eno,'$received','$shipped')";
+		$this->query("insert into orders(cno,eno,received,shipped) values($cno,$eno,'$received','$shipped');");
+		echo "Order '$cno' was created";
 	}
 
 	function editOrder($id,$column,$value){
@@ -97,7 +105,9 @@ class DatabaseHelper extends adb{
 	
 	//for parts
 	function addPart($name,$qoh,$price,$olevel){
-
+		echo "insert into parts(pname,qoh,price,olevel)values('$name',$qoh,$price,$olevel)";
+		$this->query("insert into parts(pname,qoh,price,olevel)values('$name',$qoh,$price,$olevel)");
+        	echo "Part '$name' was created";
 	}
 
 	function editPart($id, $column,$value){
@@ -106,7 +116,24 @@ class DatabaseHelper extends adb{
 
 	function deletePart($id){
 		
-	} */
-
+	}
+     //for order details
+	 function addOrderDetails($partid,$orderid,$qty){
+         $this->query("insert into odetails(ono,pno,qty) values($partid,$orderid,$qty)");		 
+		 
+	 }
+	 //search zip
+	 function searchZip(){
+		return $this->query("select * from zipcodes");
+		 
+	 }
+	 // for fetching zip
+	 
+	 function fetchZip(){
+		 $res = $this->fetch();
+		 return $res;
+		
+	 }
+	 
 }
 ?>

@@ -55,6 +55,7 @@ font-size:16px;
 	width: 300px;
 }
 
+
 </style>
 
 <body>
@@ -144,23 +145,34 @@ font-size:16px;
 							</button>
 						</div>
 						<div class="mainmenu pull-left">
-							<ul class="nav navbar-nav collapse navbar-collapse">
+								<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">Home</a></li>
-								<li class="dropdown"><a href="#" class="active">Admin Add<i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="#" class>Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shopCustomerAdd.php" >Add customer</a></li>
-										<li><a href="shopEmployeeAdd.php">Add employee</a></li> 
-										<li><a href="shopPartsadd.php" class="active">Add part</a></li> 
-										
+                                        <li><a href="shop.html" >Products</a></li>
+										<li><a href="product-details.html">Product Details</a></li> 
+										<li><a href="checkout.html">Checkout</a></li> 
+										<li><a href="cart.html">Cart</a></li> 
+										<li><a href="login.html">Login</a></li> 
                                     </ul>
                                 </li> 
+								
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
 										<li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li> 
-								<li><a href="404.html">404</a></li>
+								
+								<li class="dropdown"><a href="#" class="active">Admin<i class="fa fa-angle-down"></i></a>
+                                   <ul role="menu" class="sub-menu">
+                                        <li><a href="shopCustomerAdd.php" >Add customer</a></li>
+										<li><a href="shopEmployeeAdd.php"  >Add employee</a></li> 
+										<li><a href="shopPartsadd.php" class="active">Add part</a></li> 
+										
+                                    </ul>
+                                </li> 
+								
 								<li><a href="contact-us.html">Contact</a></li>
 							</ul>
 						</div>
@@ -324,7 +336,7 @@ font-size:16px;
 					</div>
 				</div>
 				
-				<form class="col-sm-8" action="shopPartsadd.html">
+				<form class="col-sm-8" action="shopPartsadd.php">
 <h1>Add Part</h1>
 
 <div class="column">
@@ -338,8 +350,8 @@ font-size:16px;
 <div class="column">
 <div class="row"> <input class="height" type="text" id="partName" name="partName" placeholder="Enter part name"></div>
 <div class="row"> <input class="height" type="text" id="partZip"  name="partZip" placeholder="Enter quantity"></div>
-<div class="row"><input class="height" type="text" id="partPrice" name="partPrice" placeholder="Enter Price"></div>
-<div class="row"><input class="height" type="text" id="partLevel" name="partLevel" placeholder="Enter Order level"></div>
+<div class="row"><input class="height" type="number" id="partPrice" name="partPrice" placeholder="Enter Price"></div>
+<div class="row"><input class="height" type="number" id="partLevel" name="partLevel" placeholder="Enter Order level"></div>
 
 </div>
 <div><span ><input class="submit" type="submit" value="Add" onClick="partSave()"><span></div>

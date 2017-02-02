@@ -53,8 +53,12 @@ font-size:16px;
 	width: 300px;
 }
 
+input{
+	width: 250px;
+	
+}
 
-.form{
+form{
 	margin-left:40px;
 }
 </style>
@@ -148,21 +152,33 @@ font-size:16px;
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">Home</a></li>
-								<li class="dropdown"><a href="#" class="active">Admin actions<i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="#" >Shop<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="shop.html" class="active">Products</a></li>
+										<li><a href="product-details.html">Product Details</a></li> 
+										<li><a href="checkout.html">Checkout</a></li> 
+										<li><a href="cart.html">Cart</a></li> 
+										<li><a href="login.html">Login</a></li> 
+                                    </ul>
+                                </li> 
+								
+								
+								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="blog.html">Blog List</a></li>
+										<li><a href="blog-single.html">Blog Single</a></li>
+                                    </ul>
+                                </li>
+
+                                 <li class="dropdown"><a href="#" class="active">Admin<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shopCustomerAdd.php" class="active" >Add customer</a></li>
 										<li><a href="shopEmployeeAdd.php">Add employee</a></li> 
 										<li><a href="shopPartsadd.php" >Add part</a></li> 
 										
                                     </ul>
-                                </li> 
-								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li> 
-								<li><a href="404.html">404</a></li>
+                                </li> 								
+								
 								<li><a href="contact-us.html">Contact</a></li>
 							</ul>
 						</div>
@@ -343,7 +359,7 @@ font-size:16px;
 						<div class="column">
 					  <div class="rowlabels" style="" > Name:</div>
 					 <div class="rowlabels" style="">Street: </div>
-				   <div class="rowlabels" style="">Zip Country:</div>
+				   <div class="rowlabels" style="">Region:</div>
 				  <div class="rowlabels" style="">Phone:  </div>
 
 					   </div>
@@ -367,7 +383,7 @@ font-size:16px;
 					</select>
 					<!--- //echo "<input type="text" value="" id="CZip" name="CZip" placeholder="Enter your zip number">";-->
 					</div>
-					<div class="row"> <input type="text" value="" id="CPhone"  name="CPhone" placeholder="Enter your phone number"></div>
+					<div class="row"> <input type="number" value="" id="CPhone"  name="CPhone" placeholder="Enter your phone number"></div>
 					</div>
 					<div><span ><input class="submit" type="submit" value="Add" onClick="customerSave()" ><span></div>
 

@@ -37,8 +37,8 @@ display:inline-block;
 }
 
 .rowlabels{
-margin-bottom:25px;
-margin-right:26px;
+margin-bottom:20px;
+margin-right:30px;
 margin-top:10px;
 font-size:16px;
 }
@@ -52,7 +52,9 @@ font-size:16px;
 	padding-bottom: 12px;
 	width: 250px;
 }
-
+input{
+	width: 180px;
+}
 
 .form{
 	margin-left:40px;
@@ -148,7 +150,23 @@ font-size:16px;
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">Home</a></li>
-								<li class="dropdown"><a href="#" class="active">Admin Actions<i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="#" class>Shop<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="shop.html" >Products</a></li>
+										<li><a href="product-details.html">Product Details</a></li> 
+										<li><a href="checkout.html">Checkout</a></li> 
+										<li><a href="cart.html">Cart</a></li> 
+										<li><a href="login.html">Login</a></li> 
+                                    </ul>
+                                </li> 
+
+								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="blog.html">Blog List</a></li>
+										<li><a href="blog-single.html">Blog Single</a></li>
+                                    </ul>
+                                </li> 
+                                 								<li class="dropdown"><a href="#" class="active">Admin <i class="fa fa-angle-down"></i></a>
                                    <ul role="menu" class="sub-menu">
                                         <li><a href="shopCustomerAdd.php" >Add customer</a></li>
 										<li><a href="shopEmployeeAdd.php"  class="active">Add employee</a></li> 
@@ -156,13 +174,6 @@ font-size:16px;
 										
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li> 
-								<li><a href="404.html">404</a></li>
 								<li><a href="contact-us.html">Contact</a></li>
 							</ul>
 						</div>
@@ -338,7 +349,7 @@ font-size:16px;
 <div class="column">
 <div class="rowlabels">Name: </div>
 <div class="rowlabes">Hired Date </div>
-<div class="rowlabels"> Country</div>
+<div class="rowlabels"> Region</div>
 
 
 </div>

@@ -127,10 +127,10 @@ class DatabaseHelper extends adb{
 		return $this->query("select * from zipcodes");
 		 
 	 }
+	 // for fetching zip
 	 
 	 function fetchZip(){
 		 $res = $this->fetch();
-		// print($res['city']);
 		 return $res;
 		
 	 }

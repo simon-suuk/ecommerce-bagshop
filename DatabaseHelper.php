@@ -5,7 +5,7 @@
 require_once("adb.php");
 
 /**
-*Users  class
+*DatabaseHelper  class
 */
 class DatabaseHelper extends adb{
 	
@@ -16,6 +16,10 @@ class DatabaseHelper extends adb{
 	function __construct(){
 		
 	}
+	
+	function dbCleanUp($table){
+		$this->query("DROP TABLE IF EXISTS $table");
+	} 
 	
 	function createTable($name, $query){
 		$this->query("CREATE TABLE IF NOT EXISTS $name($query)");
@@ -89,21 +93,33 @@ class DatabaseHelper extends adb{
 	}
 	
 	//for  Order
-	function addOrder($cno,$eno,$received,$shipped){
-	echo"insert into orders(cno,eno,received,shipped) values($cno,$eno,'$received','$shipped')";
-		$this->query("insert into orders(cno,eno,received,shipped) values($cno,$eno,'$received','$shipped');");
-		echo "Order '$cno' was created";
-	}
+	function addOrder($cno,$eno,$received,$shipped,$pno,$qty){
+		//orders table cno, eno, received, shipped
+		$orderQuery="INSERT INTO orders SET
+					cno = '$cno',
+					eno = '$eno',
+					received = '$received',
+					shipped = '$shipped' ";
+		$this->query($orderQuery);			
+		
+		$ono = mysqli_insert_id($this->db);
+		//$ono = $this->insert_id;
+		
+		//odetails table ono, pno, qty
+		$detailsQuery="INSERT INTO odetails SET
+					ono = '$ono',
+					pno = '$pno',
+					qty = '$qty' ";
+		$this->query($detailsQuery);		
+		
+		//parts table set qno = qno-qty
+		$partsQuery = "UPDATE parts SET
+						qno = qno - '$qty' 
+						WHERE pno = '$pno' ";
+		return $this->query($partsQuery);
+}
 
-	function editOrder($id,$column,$value){
-
-	}
-
-	function deleteOrder($id){
-
-	}
-	
-	//for parts
+//for parts
 	function addPart($name,$qoh,$price,$olevel){
 		echo "insert into parts(pname,qoh,price,olevel)values('$name',$qoh,$price,$olevel)";
 		$this->query("insert into parts(pname,qoh,price,olevel)values('$name',$qoh,$price,$olevel)");
@@ -117,6 +133,7 @@ class DatabaseHelper extends adb{
 	function deletePart($id){
 		
 	}
+
      //for order details
 	 function addOrderDetails($partid,$orderid,$qty){
          $this->query("insert into odetails(ono,pno,qty) values($partid,$orderid,$qty)");		 
@@ -134,6 +151,11 @@ class DatabaseHelper extends adb{
 		 return $res;
 		
 	 }
-	 
+
+	 function getAllParts(){
+		$strQuery="SELECT pno, pname, qno, price, bno, olevel FROM parts";
+		return $this-> query($strQuery);
+	}
+
 }
 ?>

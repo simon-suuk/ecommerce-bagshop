@@ -1,0 +1,10 @@
+Customer Name: Ephraim Fidelis Ayite
+Country: Ghana
+Product: Duffel Bag
+Quantity:2
+Color:Brown
+Price: GHS 200.00
+Expected shipping date: 22nd March 2017
+Employee on hold: Adwoba Bota
+
+Product Image:

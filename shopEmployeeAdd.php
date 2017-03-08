@@ -189,8 +189,9 @@ input{
                                         <li><a href="blog.html">Blog List</a></li>
 										<li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
-                                </li> 
-                                 								<li class="dropdown"><a href="#" class="active">Admin <i class="fa fa-angle-down"></i></a>
+                                </li>
+                                <li class="dropdown"><a href="#" class="active">Admin <i class="fa fa-angle-down">
+                                </i></a>
                                    <ul role="menu" class="sub-menu">
                                         <li><a href="shopCustomerAdd.php" >Add customer</a></li>
 										<li><a href="shopEmployeeAdd.php"  class="active">Add employee</a></li> 
@@ -351,13 +352,6 @@ input{
 				<div class="form_layout">
 				<form class="col-sm-8" action="shopEmployeeAdd.php">
 <h1>Add Employee</h1>
-<!--
-<div class="row">Name: <input type="text"  name="name" placeholder="Enter your full name"></div>
-
-<div class="row">Street: <input type="text"  name="street" placeholder="Enter your street address"></div>
-<div class="row">Zip: <input type="text" value="" name="zip" placeholder="Enter your zip number"></div>
-<div class="row">Phone number: <input type="text" value="" name="street" placeholder="Enter your phone number"></div>
-<div class="row"><input type="submit" value ="Add" onSubmit=""></div> -->
 <div class="column">
 <div class="rowlabels">Name: </div>
 <div class="rowlabes">Hired Date </div>
@@ -384,7 +378,6 @@ input{
 					}	
 					?>
 					</select>
-					<!--- //echo "<input type="text" value="" id="CZip" name="CZip" placeholder="Enter your zip number">";-->
 					</div>
 </div>
 <div><span ><input  class="submit" type="submit" value="Add" onClick="employeeSave()"><span></div>
@@ -398,84 +391,7 @@ input{
 	
 	<footer id="footer"><!--Footer-->
 		<div class="footer-top">
-			<!--div class="container">
-				<div class="row">
-					<div class="col-sm-2">
-						<div class="companyinfo">
-							<h2><span>e</span>-shopper</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
-						</div>
-					</div>
-					<div class="col-sm-7">
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="images/home/iframe1.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
-							</div>
-						</div>
-						
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="images/home/iframe2.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
-							</div>
-						</div>
-						
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="images/home/iframe3.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
-							</div>
-						</div>
-						
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="images/home/iframe4.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="address">
-							<img src="images/home/map.png" alt="" />
-							<p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
-						</div>
-					</div>
-				</div>
-			</div-->
-		</div>
+			</div>
 		
 		<div class="footer-widget">
 			<div class="container">

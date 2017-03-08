@@ -12,15 +12,7 @@
     <link href="css/price-range.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-<<<<<<< HEAD
-    <link href="css/responsive.css" rel="stylesheet">      
-=======
-    <link href="css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
->>>>>>> b2e4f509e8504d45e91cd8570090f53daa72fae1
+    <link href="css/responsive.css" rel="stylesheet"> 
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -170,7 +162,6 @@
                       <li><a href="shopPartsadd.php" >Add part</a></li>
                     </ul>
                   </li>
-<<<<<<< HEAD
                   <li class="dropdown"><a href="#">Product Report<i class="fa fa-angle-down"></i></a>
 				  <ul role="menu" class="sub-menu">
                       <li><a href="test101.php" class="active" >Download Report in Pdf</a></li>
@@ -179,9 +170,6 @@
 					  </li>
                     </ul>
 					</li>
-=======
-                  <li><a href="contact-us.html">Contact</a></li>
->>>>>>> b2e4f509e8504d45e91cd8570090f53daa72fae1
                 </ul>
               </div>
             </div>

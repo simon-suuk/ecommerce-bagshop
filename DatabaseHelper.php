@@ -8,8 +8,6 @@ require_once("adb.php");
 *DatabaseHelper  class
 */
 class DatabaseHelper extends adb{
-	
-
 	/**
 	*constructor
 	*/
@@ -61,6 +59,17 @@ class DatabaseHelper extends adb{
 		$query = "delete from Customers where cno=$id";
 		query($query);
 		echo "Successfull delete";
+	}
+
+	function selectEmp(){
+		$strQuery="select fname, lname, hdate from employees";
+		return $this->query($strQuery);
+	}
+
+	function selectCust(){
+		$strQuery="select fname, lname, street, phone from customers";
+		return $this->query($strQuery);
+
 	}
 	
 	//for employees
@@ -156,13 +165,10 @@ class DatabaseHelper extends adb{
 		$strQuery="SELECT pno, pname, qno, price, bno, olevel FROM parts";
 		return $this-> query($strQuery);
 	}
-<<<<<<< HEAD:DatabaseHelper.php
 	
 	function graph(){
-		$strQuery="select bags.types as categories, count(parts.pname) as Collections from parts,bags where parts.bno=bags.bno  group by bags.types";return $this->query($strQuery);
+		$strQuery="select bags.types as categories, count(parts.pname) as Collections from parts,bags where parts.bno=bags.bno  group by bags.types";
+		return $this->query($strQuery);
 	}
-=======
-
->>>>>>> b2e4f509e8504d45e91cd8570090f53daa72fae1:DatabaseHelper.php
 }
 ?>

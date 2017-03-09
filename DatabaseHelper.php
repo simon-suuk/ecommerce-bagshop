@@ -22,11 +22,7 @@ class DatabaseHelper extends adb{
 	function createTable($name, $query){
 		$this->query("CREATE TABLE IF NOT EXISTS $name($query)");
 	}
-
-	/**
-	*Searches  
-	*
-	*/
+	
 	function search($name,$table){
 		if($table=='parts'){
 			$strQuery="select pname, price, qno, bno from parts where pname like '%$name%' or price like '%$name%' or qno like '%$name%' or bno like '%$name%' ";
@@ -41,8 +37,7 @@ class DatabaseHelper extends adb{
 			return $this-> query($strQuery);
 		}
 	}
-	
-	//for customers
+
 	function addCustomer($name,$street,$zip,$phone){
 		echo"insert into customers(cname,street,zip,phone) values('$name','$street',$zip,'$phone')";
 		$this->query("insert into customers(cname,street,zip,phone) values('$name','$street',$zip,'$phone');");
@@ -62,7 +57,7 @@ class DatabaseHelper extends adb{
 	}
 
 	function selectEmp(){
-		$strQuery="select fname, lname, hdate from employees";
+		$strQuery="select eno, fname, lname, zip, hdate from employees";
 		return $this->query($strQuery);
 	}
 
@@ -73,15 +68,13 @@ class DatabaseHelper extends adb{
 	}
 	
 	//for employees
-	function addEmployee($name,$zip,$hdate){
+	function addEmployee($fname,$lname,$zip,$hdate, $username, $pword){
 		
- $this->query("insert into employees(ename,zip,hdate) values('$name',$zip,'$hdate');");
-
-		echo "Customer '$name' was created";
+ $this->query("insert into employees(fname,lname, zip,hdate,username,pword) values('$fname','$lname',$zip,'$hdate','$username','pword');");
 	}
 
-	function editEmployee($column,$id,$value){
-	
+	function editEmployee($eno,$fname,$lname,$zip,$hdate, $username, $pword){
+	$strQuery="UPDATE employees SET fname=$fname, lname=$lname,zip=$zip,hdate=$hdate,username=$username,pword=md5($pword) WHERE eno=$eno";
 	}
 
 	function deleteEmployee($id){

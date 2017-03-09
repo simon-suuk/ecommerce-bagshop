@@ -80,7 +80,7 @@
           <div class="row">
             <div class="col-sm-4">
               <div class="logo pull-left">
-                <a href="index.php"><img src="images/home/BagShop.png" alt="" width="130"; height="55";"/></a>
+                <a href="index.php"><img src="images/home/BagShop.png" alt="" width="130"; height="75";"/></a>
               </div>
               <div class="btn-group pull-right">
                 <div class="btn-group">

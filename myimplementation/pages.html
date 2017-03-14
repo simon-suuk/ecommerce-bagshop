@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Report</title>
+</head>
+<body>
+
+<h1>Show by month</h1>
+Numbers of visits today is: 
+<?php 
+if(!isset($_SESSION)){session_start()};
+$sessionname  = session_id();
+  $db = mysqli_connect('localhost','root','root','bags');
+ $query = "insert into  testers set name='$sessionname', datespan =".date('Y-m-d H:i:s', time());
+ $result=$db->query($query);
+ if($result)echo "successful";
+ $query = "select count(name) from testers";
+ $result = $db->query($query);
+ $row = $result->fetch();
+ echo $row;
+ 
+ 
+ ?>
+
+
+</body>
+
+
+</html>

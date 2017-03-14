@@ -45,6 +45,7 @@
   </head>
   <!--/head-->
   <body>
+  
     <header id="header">
       <!--header-->
       <div class="header_top">
@@ -154,6 +155,13 @@
                       <li><a href="blog-single.html">Blog Single</a></li>
                     </ul>
                   </li>
+				  <li class="#dropdown">
+				  <a href="">Statistics</a>
+				  <ul role="menu" class="sub-menu">
+                      <li><a href="result_fused.php">Order statistics</a></li>
+                      <li><a href="visits.php">Check visits</a></li>
+                    </ul>
+				  </li>
                   <li class="dropdown">
                     <a href="#" class="active">Admin<i class="fa fa-angle-down"></i></a>
                     <ul role="menu" class="sub-menu">

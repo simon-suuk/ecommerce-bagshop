@@ -168,17 +168,17 @@ input{
                                     </ul>
                                 </li>
 								<li class="#dropdown">
-				  <a href="">Statistics</a>
+				  <a href="" class="active">Statistics</a>
 				  <ul role="menu" class="sub-menu">
-                      <li><a href="result_fused.php">Order statistics</a></li>
+                      <li><a href="result_fused.php" class="active">Order statistics</a></li>
                       <li><a href="visits.php">Check visits</a></li>
                     </ul>
 				  </li>
 								
-                                 								<li class="dropdown"><a href="#" class="active">Admin <i class="fa fa-angle-down"></i></a>
+                                 								<li class="dropdown"><a href="#">Admin <i class="fa fa-angle-down"></i></a>
                                    <ul role="menu" class="sub-menu">
                                         <li><a href="shopCustomerAdd.php" >Add customer</a></li>
-										<li><a href="shopEmployeeAdd.php"  class="active">Add employee</a></li> 
+										<li><a href="shopEmployeeAdd.php"  >Add employee</a></li> 
 										<li><a href="shopPartsadd.php" >Add part</a></li> 
 										
                                     </ul>
@@ -363,7 +363,7 @@ background-repeat: no-repeat
 
 
 
-<div  style="display:inline-block;margin-right:45px;color:white;font-size:15px;">Select period:</div>
+<div  style="display:inline-block;margin-right:45px;color:black;font-size:15px;">Select period:</div>
 <div style="display:inline-block;width:160px;margin-right:45px">
 <select id="period" name="period">
 <option value="" disabled selected>------</option>
@@ -373,7 +373,7 @@ background-repeat: no-repeat
 </select></div>
 <button name="validate" style="background:orange;color:white" onClick="choose()"> Show</button>
 
-<div style="margin-top:20px;font-size:26px;color:white;"><div style="display:inline-block" id="result"></div></div>
+<div style="margin-top:20px;font-size:26px;color:white;"><span style="background-color:white;border-radius:6px;margin:5px;color:orange" id="result"></span></div>
 </div>
 
 

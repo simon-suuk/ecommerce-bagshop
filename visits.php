@@ -168,17 +168,17 @@ input{
                                     </ul>
                                 </li>
 								<li class="#dropdown">
-				  <a href="">Statistics</a>
+				  <a href="#"  class="active">Statistics</a>
 				  <ul role="menu" class="sub-menu">
                       <li><a href="result_fused.php">Order statistics</a></li>
-                      <li><a href="">Check visits</a></li>
+                      <li><a href=""  class="active">Check visits</a></li>
                     </ul>
 				  </li>
 								
-                                 								<li class="dropdown"><a href="#" class="active">Admin <i class="fa fa-angle-down"></i></a>
+                                 								<li class="dropdown"><a href="#">Admin <i class="fa fa-angle-down"></i></a>
                                    <ul role="menu" class="sub-menu">
                                         <li><a href="shopCustomerAdd.php" >Add customer</a></li>
-										<li><a href="shopEmployeeAdd.php"  class="active">Add employee</a></li> 
+										<li><a href="shopEmployeeAdd.php" >Add employee</a></li> 
 										<li><a href="shopPartsadd.php" >Add part</a></li> 
 										
                                     </ul>

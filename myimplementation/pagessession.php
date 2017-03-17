@@ -16,6 +16,8 @@ function __constructor(){
 	
 $this->helper=new DatabaseHelper();		
 }
+
+/***code copied from stack overflow**/
 function getip(){	
 	  $ipaddress = '';
     if (getenv('HTTP_CLIENT_IP'))

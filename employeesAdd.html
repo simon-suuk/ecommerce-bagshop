@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><title>Add Employee</title>
+<script src="jquery-1.12.2.js"></script>
+<script src="tasks.js"></script>
+</head>
+<style>
+.row{
+margin-bottom:10px;
+margin-right:3px;
+
+}
+.column{
+display:inline-block;
+}
+</style>
+<body>
+<form action="employeesAdd.html">
+<h1>Add Employee</h1>
+<div class="column">
+<div class="row">Name: </div>
+<div class="row">Zip: </div>
+<div class="row">Hired Date </div>
+
+
+</div>
+<div class="column">
+<div class="row"> <input type="text" id="EName" name="employeeName" placeholder="Enter name"></div>
+<div class="row"> <input type="text" id="EZip" value="" name="employeeZip" placeholder="Enter zip number"></div>
+<div class="row"><input type="text" id="EHire" name="employeeHire" placeholder="Enter Date of Hiring"></div>
+
+
+</div>
+<div><span ><input  type="submit" value="Add" onClick="employeeSave()"><span></div>
+
+</form>
+
+
+
+</body>
+
+
+</html>

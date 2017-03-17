@@ -2,17 +2,17 @@
 
 /**
 */
-include_once("adb.php");
+require_once("adb.php");
 
 /**
 *DatabaseHelper  class
 */
 class DatabaseHelper extends adb{
-
 	/**
 	*constructor
 	*/
 	function __construct(){
+		
 	}
 	
 	function dbCleanUp($table){
@@ -44,7 +44,8 @@ class DatabaseHelper extends adb{
 	
 	//for customers
 	function addCustomer($name,$street,$zip,$phone){
-		query("insert into customers(cname,street,zip,phone) values('$name','$street',$zip,'$phone');");
+		echo"insert into customers(cname,street,zip,phone) values('$name','$street',$zip,'$phone')";
+		$this->query("insert into customers(cname,street,zip,phone) values('$name','$street',$zip,'$phone');");
 		echo "Customer '$name' was created";
 	}
 	
@@ -59,10 +60,28 @@ class DatabaseHelper extends adb{
 		query($query);
 		echo "Successfull delete";
 	}
+
+	function selectEmp(){
+		$strQuery="select fname, lname, hdate from employees";
+		return $this->query($strQuery);
+	}
+
+	function selectCust(){
+		$strQuery="select fname, lname, street, phone from customers";
+		return $this->query($strQuery);
+	}
+	
+	function getAllCustomers(){
+		$strQuery="SELECT cno, cname, street, zip, phone FROM customers";
+		return $this-> query($strQuery);
+	}
 	
 	//for employees
 	function addEmployee($name,$zip,$hdate){
+		
+ $this->query("insert into employees(ename,zip,hdate) values('$name',$zip,'$hdate');");
 
+		echo "Customer '$name' was created";
 	}
 
 	function editEmployee($column,$id,$value){
@@ -111,19 +130,13 @@ class DatabaseHelper extends adb{
 						qno = qno - '$qty' 
 						WHERE pno = '$pno' ";
 		return $this->query($partsQuery);
-	}
+}
 
-	function editOrder($id,$column,$value){
-
-	}
-
-	function deleteOrder($id){
-
-	}
-	
-	//for parts
+//for parts
 	function addPart($name,$qoh,$price,$olevel){
-	
+		echo "insert into parts(pname,qoh,price,olevel)values('$name',$qoh,$price,$olevel)";
+		$this->query("insert into parts(pname,qoh,price,olevel)values('$name',$qoh,$price,$olevel)");
+        	echo "Part '$name' was created";
 	}
 
 	function editPart($id, $column,$value){
@@ -133,11 +146,33 @@ class DatabaseHelper extends adb{
 	function deletePart($id){
 		
 	}
-	
-	function getAllParts(){
-		$strQuery="SELECT pno, pname, qno, price, bno, olevel FROM bagshop.parts";
+
+     //for order details
+	 function addOrderDetails($partid,$orderid,$qty){
+         $this->query("insert into odetails(ono,pno,qty) values($partid,$orderid,$qty)");		 
+		 
+	 }
+	 //search zip
+	 function searchZip(){
+		return $this->query("select * from zipcodes");
+		 
+	 }
+	 // for fetching zip
+	 
+	 function fetchZip(){
+		 $res = $this->fetch();
+		 return $res;
+		
+	 }
+
+	 function getAllParts(){
+		$strQuery="SELECT pno, pname, qno, price, bno, olevel FROM parts";
 		return $this-> query($strQuery);
 	}
-
+	
+	function graph(){
+		$strQuery="select bags.types as categories, count(parts.pname) as Collections from parts,bags where parts.bno=bags.bno  group by bags.types";
+		return $this->query($strQuery);
+	}
 }
 ?>

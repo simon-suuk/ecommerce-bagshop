@@ -9,14 +9,7 @@
 
 <?php // Example 26-3: setup.php
 include_once('DatabaseHelper.php');
-
 $dbh = new DatabaseHelper();
-
-/*$dbh->dbCleanUp('`zipcodes`');
-$dbh->dbCleanUp('`customers`');
-$dbh->dbCleanUp('`employees`');
-$dbh->dbCleanUp('bags');
-$dbh->dbCleanUp('parts');*/
 
 $dbh->createTable('`zipcodes`',
 	'`zip` decimal(5,0) NOT NULL,
@@ -32,7 +25,6 @@ $dbh->createTable('`customers`',
 	PRIMARY KEY (`cno`),
 	KEY `zip` (`zip`),
 	CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`zip`) REFERENCES `zipcodes` (`zip`) ON DELETE NO ACTION ON UPDATE NO ACTION');
-
 $dbh->createTable('`employees`',
 	'`eno` bigint(4) NOT NULL AUTO_INCREMENT,
 	`ename` varchar(30) NOT NULL,
@@ -41,7 +33,6 @@ $dbh->createTable('`employees`',
 	PRIMARY KEY (`eno`),
 	KEY `zip_idx` (`zip`),
 	CONSTRAINT `zip` FOREIGN KEY (`zip`) REFERENCES `zipcodes` (`zip`) ON DELETE NO ACTION ON UPDATE NO ACTION');
-
 $dbh->createTable('bags',
 	'bno int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	types varchar(45) NOT NULL');
@@ -54,7 +45,6 @@ $dbh->createTable('parts',
 	bno int(11) NOT NULL,
 	olevel int(11) NOT NULL,
 	FOREIGN KEY (bno) REFERENCES bags (bno) ON DELETE NO ACTION ON UPDATE CASCADE');
-
 $dbh->createTable('orders',
 	'ono bigint(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	cno bigint(5) NOT NULL,

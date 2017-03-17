@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Checkout | E-Shopper</title>
+    <title>Order | E-Shopper</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -27,6 +27,7 @@
 <!--/head-->
 
 <body>
+	<?php $order_info=""; ?>
     <header id="header">
         <!--header-->
         <div class="header_top">
@@ -36,8 +37,8 @@
                     <div class="col-sm-6">
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
-                                <li><a href=""><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                                <li><a href=""><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                                <li><a href=""><i class="fa fa-phone"></i> +233541784079 </a></li>
+                                <li><a href=""><i class="fa fa-envelope"></i> bagShop@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -125,7 +126,7 @@
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
                                         <li><a href="product-details.html">Product Details</a></li>
-                                        <li><a href="order.html" class="active">Order</a></li>
+                                        <li><a href="order.php" class="active">Order</a></li>
                                         <li><a href="cart.html">Cart</a></li>
                                         <li><a href="login.html">Login</a></li>
                                     </ul>
@@ -136,7 +137,14 @@
                                         <li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="404.html">404</a></li>
+                                <li class="dropdown"><a href="#" class="active">Admin<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="shopCustomerAdd.php" class="active" >Add customer</a></li>
+				<li><a href="shopEmployeeAdd.php">Add employee</a></li> 
+				<li><a href="shopPartsadd.php" >Add part</a></li> 
+										
+                                    </ul>
+                                </li>
                                 <li><a href="contact-us.html">Contact</a></li>
                             </ul>
                         </div>
@@ -151,29 +159,37 @@
         </div>
         <!--/header-bottom-->
     </header>
-    <!--/header-->
+<!--/header-->
 
     <section id="cart_items">
         <div class="container">
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li class="active">Order</li>
+                    <li class="active">Check out</li>
                 </ol>
             </div>
             <!--/breadcrums-->
-
-            <?php
+			
+			 <?php
                 if(isset($_POST['submit'])){
 
                     $cno = $_REQUEST['cno'];
-                    $password = $_REQUEST['passwd'];
+                    //$password = $_REQUEST['passwd'];
                     $eno = $_REQUEST['eno'];
                     $pno = $_REQUEST['part'];
                     $qty = $_REQUEST['qty'];
-                    $received = "";
-                    $shipped = "";
+                    $shipped = date("Y-m-d H:i:s");
+		    $received = date('Y-m-d H:i:s', strtotime($shipped. ' + 7 days'));
+		    
+		    $diff = abs(strtotime($received) - strtotime($shipped));
 
+			$years = floor($diff / (365*60*60*24));
+			$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+			$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+			$order_info = "Order has been successfully placed! Customer will receive the order on ". $received. ". That is in ". $days . " days. Thank you.";
+			//printf("%d years, %d months, %d days\n", $years, $months, $days);
+			
                     include_once("DatabaseHelper.php");
                     $dbhObj = new DatabaseHelper();
                     $r=$dbhObj->addOrder($cno,$eno,$received,$shipped,$pno,$qty);
@@ -186,20 +202,39 @@
                 }
             ?>
 
+            <div class="register-req">
+                <p></p>
+            </div>
+            <!--/register-req-->
 
-                <div class="shopper-informations">
-                    <div class="row">
-                        <form action="" method="POST">
+            <div class="shopper-informations">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="shopper-info">
+                             <form action="" method="POST">
 
                             <p>Customer Information</p>
-                            <input type="number" placeholder="Customer's Number" name="cno" value="">
-                            <input type="password" placeholder="Password" name="passwd" value="">
+                            <!--input type="number" placeholder="Customer's Number" name="cno" value=""-->
+			    <select name="cno">
+                                <?php
+                                    include_once("DatabaseHelper.php");
+                                    $dbh = new DatabaseHelper();
+                                    $dbh->getAllCustomers();
+
+                                    echo "<option value = '-1'>-- select customer --</option>";
+                                    while($row = $dbh->fetch()){
+                                        echo "<option value = {$row["cno"]}>{$row["cname"]}</option>";
+                                    }
+                                ?>
+                            </select>
+                            <!--input type="password" placeholder="Password" name="passwd" value=""-->
 
 
                             <p>Employee Information</p>
 
                             <input type="number" placeholder="Employee's Number" name="eno" value="">
 
+							<p>Order Information</p>
                             <select name="part">
                                 <?php
                                     include_once("DatabaseHelper.php");
@@ -213,25 +248,23 @@
                                 ?>
                             </select>
 
+							<p></p>
                             <input type="number" placeholder="Quantity Demanded" name="qty" value="">
 
                             <!--a class="btn btn-primary" href="">Make Order</a-->
                             <input class="btn btn-primary" type="submit" name="submit" value="Make Order" />
                         </form>
-
-
-                        <div class="col-sm-4">
-                            <div class="order-message">
-                                <p>Order Notification</p>
-                                <textarea name="message" placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
-                            </div>
+                        </div>
+                    </div>
+                 
+                    <div class="col-sm-4">
+                        <div class="order-message">
+                             <p>Order Notification</p>
+                            <textarea name="message" placeholder="Notes about your order, Special Notes for Delivery" rows="16"><?php echo $order_info; ?></textarea>
                         </div>
                     </div>
                 </div>
-        </div>
-    </section>
-    <!--/#cart_items-->
-
+            </div>
 
 
     <footer id="footer">
@@ -327,7 +360,7 @@
                                 <li><a href="">Contact Us</a></li>
                                 <li><a href="">Order Status</a></li>
                                 <li><a href="">Change Location</a></li>
-                                <li><a href="">FAQâ€™s</a></li>
+                                <li><a href="">FAQ’s</a></li>
                             </ul>
                         </div>
                     </div>
@@ -386,7 +419,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <p class="pull-left">Copyright Â© 2013 E-SHOPPER Inc. All rights reserved.</p>
+                    <p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
                     <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
                 </div>
             </div>

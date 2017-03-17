@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Order | E-Shopper</title>
+    <title>Order | BagShop</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -23,6 +23,29 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+	<script>
+         function showResult(str) {
+           if (str.length==0) { 
+             document.getElementById("livesearch").innerHTML="";
+             document.getElementById("livesearch").style.border="0px";
+             return;
+           }
+           if (window.XMLHttpRequest) {
+             // code for IE7+, Firefox, Chrome, Opera, Safari
+             xmlhttp=new XMLHttpRequest();
+           } else {  // code for IE6, IE5
+             xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+           }
+           xmlhttp.onreadystatechange=function() {
+             if (this.readyState==4 && this.status==200) {
+               document.getElementById("livesearch").innerHTML=this.responseText;
+               document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+             }
+           }
+           xmlhttp.open("GET","w3schoolsAJAX.php?q="+str,true);
+           xmlhttp.send();
+         }
+      </script>
 </head>
 <!--/head-->
 
@@ -64,38 +87,38 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+                            <a href="index.php"><img src="images/home/BagShop.png" alt="" /></a>
                         </div>
                         <div class="btn-group pull-right">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                    USA
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="">Canada</a></li>
-                                    <li><a href="">UK</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                    DOLLAR
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="">Canadian Dollar</a></li>
-                                    <li><a href="">Pound</a></li>
-                                </ul>
-                            </div>
+                        <div class="btn-group">
+                           <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                           GHANA
+                           <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu">
+                              <li><a href="#">NIGERIA</a></li>
+                              <li><a href="#">UK</a></li>
+                              <li><a href="#">CHINA</a></li>
+                           </ul>
                         </div>
+                        <div class="btn-group">
+                           <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                           GHS
+                           <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu">
+                              <li><a href="#">Dollar</a></li>
+                              <li><a href="#">Pound</a></li>
+                           </ul>
+                        </div>
+                     </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
                                 <li><a href=""><i class="fa fa-user"></i> Account</a></li>
                                 <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-                                <li><a href="order.html" class="active"><i class="fa fa-crosshairs"></i> Order</a></li>
+                                <li><a href="order.php" class="active"><i class="fa fa-crosshairs"></i> Order</a></li>
                                 <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
                             </ul>
@@ -121,7 +144,7 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="index.php">Home</a></li>
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
@@ -142,7 +165,6 @@
                                         <li><a href="shopCustomerAdd.php" class="active" >Add customer</a></li>
 				<li><a href="shopEmployeeAdd.php">Add employee</a></li> 
 				<li><a href="shopPartsadd.php" >Add part</a></li> 
-										
                                     </ul>
                                 </li>
                                 <li><a href="contact-us.html">Contact</a></li>
@@ -270,83 +292,6 @@
     <footer id="footer">
         <!--Footer-->
         <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <div class="companyinfo">
-                            <h2><span>e</span>-shopper</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="images/home/iframe1.png" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="images/home/iframe2.png" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="images/home/iframe3.png" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="images/home/iframe4.png" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="address">
-                            <img src="images/home/map.png" alt="" />
-                            <p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="footer-widget">
@@ -366,7 +311,7 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="single-widget">
-                            <h2>Quock Shop</h2>
+                            <h2>Quick Shop</h2>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="">T-Shirt</a></li>
                                 <li><a href="">Mens</a></li>
@@ -390,7 +335,7 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="single-widget">
-                            <h2>About Shopper</h2>
+                            <h2>About BagShop</h2>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="">Company Information</a></li>
                                 <li><a href="">Careers</a></li>
@@ -402,7 +347,7 @@
                     </div>
                     <div class="col-sm-3 col-sm-offset-1">
                         <div class="single-widget">
-                            <h2>About Shopper</h2>
+                            <h2>About BagShop</h2>
                             <form action="#" class="searchform">
                                 <input type="text" placeholder="Your email address" />
                                 <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
@@ -426,10 +371,6 @@
         </div>
 
     </footer>
-    <!--/Footer-->
-
-
-
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.scrollUp.min.js"></script>

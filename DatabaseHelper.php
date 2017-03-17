@@ -174,5 +174,121 @@ class DatabaseHelper extends adb{
 		$strQuery="select bags.types as categories, count(parts.pname) as Collections from parts,bags where parts.bno=bags.bno  group by bags.types";
 		return $this->query($strQuery);
 	}
+
+	function getDetailsByDay(){
+		 $todaydate = date('d',time());
+		// echo "select count(ono) from orders where DAY(shipped)=$todaydate ";
+		 return $this->query("select count(ono) AS result from orders where DAY(shipped)=$todaydate");
+		 
+	 }
+	 function fetchDetailsByDay(){
+        $array = array();
+           $res = $this->fetch();		
+		while($res != null ){
+		array_push($array,$res);
+		$res =$this->fetch();
+		}
+		// print_r($array);
+		echo"Number of orders:";
+		 echo $array['0']['result'];
+		  }
+		  
+		  function getDetailsByWeek(){
+			  $day = date('w');
+			  $today= date('Y-m-d');
+            $week_start = date('Y-m-d', strtotime('-'.$day.' days'));
+		    
+			//echo "select count(ono) AS result from orders where shipped between '$week_start'  and '$today' ";
+		 return $this->query("select count(ono) AS result from orders where shipped between '$week_start'  and '$today' ");
+		 
+	 }
+	 
+	 function fetchDetailsByWeek(){
+        $array = array();
+           $res = $this->fetch();		
+		while($res != null ){
+		array_push($array,$res);
+		$res =$this->fetch();
+		}
+		// print_r($array);
+		echo"Number of orders: ";
+		 echo $array['0']['result'];
+		  }
+		  
+		  
+		  
+		  	 function getDetailsByMonth(){
+		 $todaydate = date('m',time());
+		// echo "select count(ono) from orders where MONTH(shipped)=$todaydate ";
+		 return $this->query("select count(ono) AS result from orders where MONTH(shipped)=$todaydate ");
+		 
+	 }
+	 function fetchDetailsByMonth(){
+        $array = array();
+           $res = $this->fetch();		
+		while($res != null ){
+		array_push($array,$res);
+		$res =$this->fetch();
+		}
+		// print_r($array);
+		echo"Number of orders: ";
+		 echo $array['0']['result'];
+		  }
+		  
+		function insertSession($ip,$value){
+			$sql ="insert into sessions set ip ='$ip', datespan='$value' ";
+			//echo $sql;
+			return $this->query($sql);		
+		}
+          
+		function checkSessionDate($ip){
+			$sql ="select date_format(max(datespan), '%Y-%m-%d %H:%i') as date from sessions where ip='$ip'";
+			//echo $sql;
+		 $this->query($sql);
+		 return $this->fetchSessionDate();
+		 
+		}
+		 
+		 function checkExistence(){
+			 $sql ="select count(*) AS count from sessions";
+			//echo $sql;
+			return $this->query($sql);
+			 }
+			 function fetchExistence(){
+				 $result = $this->fetch();
+				 $row = $result['count'];
+				 return $row;
+				 //return $this->fetch();
+				 
+			 }
+	    function fetchSessionDate(){
+			return $this->fetch();
+		}
+		
+		function checkip($ip){
+			$sql ="select count(*) AS count from sessions where ip='$ip'";
+			return $this->query($sql);
+			
+			
+		}
+		function fetchip(){
+			$result = $this->fetch();
+				 $row = $result['count'];
+				 return $row;
+			
+		}
+		
+		function checkVisitsToday($date){
+			$sql = "select count(distinct ip) as visit from sessions where datespan='$date' ";
+			//echo $sql;
+			$this->query($sql);
+			return $this->fetchVisitsToday();
+		}
+		 function fetchVisitsToday(){
+	        $result = $this->fetch();
+			$row = $result['visit'];
+	      return  $row;
+}
+
 }
 ?>

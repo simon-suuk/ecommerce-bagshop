@@ -1,4 +1,5 @@
-<!--A Design by W3layouts 
+<!--The CSS and framework is Sourced from W3layout
+A Design by W3layouts 
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -27,7 +28,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					$lname=$_REQUEST['LASTNAME'];
 					$zip=$_REQUEST['ZIP'];
 					$hdate=$_REQUEST['DATE_HIRED'];
-					$eno=$_REQUEST[eno];
+					$eno=$_REQUEST['ENO'];
 					
 					if (isset($_REQUEST['submit'])){
 					$r=$obj->editEmployee($eno,$fname,$lname,$zip,$hdate, $username, $pword);
@@ -37,7 +38,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	?>
 	
     <div class="main">
-        <a href="index.php"><img src="images/BagShop.png" alt="company logo" width="160px" height="130px"</a>
+        <a href="index.php"><img src="images/BagShop.png" alt="company logo" width="160px" height="130px"></a>
         <h1>Department Store</h1>
     </div>
 <div class="content-w3ls">
@@ -73,7 +74,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="content-wthree4">	
 				<div class="form-control">
                     <br>
-					<input type="submit" class="register" value="Submit">
+					<button type="submit" class="register" value="submit" name="submit">Submit</button>
 					
 					<div class="clear"></div>
 				</div>

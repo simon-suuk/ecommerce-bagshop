@@ -55,7 +55,7 @@ class DatabaseHelper extends adb{
 		query($query);
 		echo "Successfull delete";
 	}
-
+	/*this is the employee section*/
 	function selectEmp(){
 		$strQuery="select eno, fname, lname, zip, hdate from employees";
 		return $this->query($strQuery);
@@ -67,14 +67,25 @@ class DatabaseHelper extends adb{
 
 	}
 	
+	function empLogin($username,$pword){
+		$strQuery="select username, pword, id from employees where username like '$username' and pword like '$pword'";
+		echo $strQuery;
+		return $this->query($strQuery);
+	}
+	
+	function selZip($city){
+		$strQuery="select zip from zipcodes where city like'$city'";
+		return $this->query($strQuery);
+	}
+	
 	//for employees
-	function addEmployee($fname,$lname,$zip,$hdate, $username, $pword){
-		
- $this->query("insert into employees(fname,lname, zip,hdate,username,pword) values('$fname','$lname',$zip,'$hdate','$username','pword');");
+	function addEmployee($fname,$lname,$city,$job,$hdate, $username,$pword){	
+	$this->query("insert into employees(fname,lname, zip,hdate,username,pword,id) values('$fname','$lname',$city,'$hdate','$username','pword',$job);");
 	}
 
 	function editEmployee($eno,$fname,$lname,$zip,$hdate, $username, $pword){
-	$strQuery="UPDATE employees SET fname=$fname, lname=$lname,zip=$zip,hdate=$hdate,username=$username,pword=md5($pword) WHERE eno=$eno";
+	$strQuery="UPDATE employees SET fname='$fname', lname='$lname',zip=$zip,hdate=$hdate,username='$username',pword=md5('$pword') WHERE eno=$eno";
+	return $this->query($strQuery);
 	}
 
 	function deleteEmployee($id){

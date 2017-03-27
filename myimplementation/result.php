@@ -6,7 +6,7 @@
 <script type="text/javascript" src="jquery-1.12.2.js"></script>
 </head>
 <h1>Orders statistics</h1>
-Select period:<select id="period" name="period">
+Select period:<select id="period" name="period"  onchange="choose()">
 <option value="day">day</option>
 <option value="week">week</option>
 <option value="month">month</option>

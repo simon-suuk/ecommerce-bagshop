@@ -12,31 +12,82 @@
 include("DatabaseHelper.php");
 class IP{
 private $helper;
-function __constructor(){
+function __constructor(){ 
 	
 $this->helper=new DatabaseHelper();		
 }
 
 /***code copied from stack overflow**/
-function getip(){	
-	  $ipaddress = '';
-    if (getenv('HTTP_CLIENT_IP'))
-        $ipaddress = getenv('HTTP_CLIENT_IP');
-    else if(getenv('HTTP_X_FORWARDED_FOR'))
-        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-    else if(getenv('HTTP_X_FORWARDED'))
-        $ipaddress = getenv('HTTP_X_FORWARDED');
-    else if(getenv('HTTP_FORWARDED_FOR'))
-        $ipaddress = getenv('HTTP_FORWARDED_FOR');
-    else if(getenv('HTTP_FORWARDED'))
-       $ipaddress = getenv('HTTP_FORWARDED');
-    else if(getenv('REMOTE_ADDR'))
-        $ipaddress = getenv('REMOTE_ADDR');
+function getip(){
+/**taken from stackiverflow
+     http://stackoverflow.com/questions/15699101/get-the-client-ip-address-using-php
+***/	 
+	   $ipaddress = '';
+   /** if (isset($_SERVER['HTTP_CLIENT_IP']))
+        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if(isset($_SERVER['HTTP_X_FORWARDED']))
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if(isset($_SERVER['HTTP_FORWARDED']))
+        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    else if(isset($_SERVER['REMOTE_ADDR']))
+        $ipaddress = $_SERVER['REMOTE_ADDR'];
     else
         $ipaddress = 'UNKNOWN';
-return $ipaddress;
-}
 	
+	return $ipaddress;
+	**/
+	
+	$client  = @$_SERVER['HTTP_CLIENT_IP'];
+    $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+	$forwardfor = @$_SERVER['HTTP_X_FORWARDED_'];
+    $remote  = $_SERVER['REMOTE_ADDR'];
+
+    if(filter_var($client, FILTER_VALIDATE_IP))
+    {
+        $ip = $client;
+    }
+    elseif(filter_var($forward, FILTER_VALIDATE_IP))
+    {
+        $ip = $forward;
+    }
+    else
+    {
+        $ip = $remote;
+    }
+
+    //return $ip;
+	echo $client;
+	echo $forward;
+	echo $forwardfor;
+	echo $remote;
+    
+}
+
+
+function storeinfo(){
+	//check if visitorid is stored as a cookie
+	if (!isset($_COOKIE['visitor'])){
+		
+		
+	}else{
+		$ip = $this->getip();
+		$value = random(1,50);
+		$query= "select * from sessions where visitorid=$value and IP";
+		$arrayvisits = $_COOKIE['visitors'];
+		$this->helper->insertVisits();
+		setcookie("visitor",$value);
+		
+	}
+	$select ="select * from session ";
+	
+	
+	
+	
+}	
 function updateStats(){
 	
 	

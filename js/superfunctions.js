@@ -58,6 +58,14 @@ function displayMonth(){
 	}
 	);
 	
-	
+	function displaylivemonth(){
+		
+		 $("#period").change(function () {
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+            alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+        });
+		
+	}
 	
 }

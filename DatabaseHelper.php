@@ -230,8 +230,8 @@ class DatabaseHelper extends adb{
 		 echo $array['0']['result'];
 		  }
 		  
-		function insertSession($ip,$value){
-			$sql ="insert into sessions set ip ='$ip', datespan='$value' ";
+		function insertSession($ip,$value,$visitorid){
+			$sql ="insert into sessions set ip ='$ip', datespan='$value',visitorid='$visitorid' ";
 			//echo $sql;
 			return $this->query($sql);		
 		}
@@ -284,5 +284,7 @@ class DatabaseHelper extends adb{
 			$row = $result['visit'];
 	      return  $row;
 }
+
+           
 }
 ?>

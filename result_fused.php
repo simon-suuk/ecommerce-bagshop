@@ -365,13 +365,13 @@ background-repeat: no-repeat
 
 <div  style="display:inline-block;margin-right:45px;color:black;font-size:15px;">Select period:</div>
 <div style="display:inline-block;width:160px;margin-right:45px">
-<select id="period" name="period">
+<select id="period" name="period" onchange="choose()">
 <option value="" disabled selected>------</option>
 <option value="day">day</option>
 <option value="week">week</option>
 <option value="month">month</option>
 </select></div>
-<button name="validate" style="background:orange;color:white" onClick="choose()"> Show</button>
+<!--<button name="validate" style="background:orange;color:white" onClick="choose()"> Show</button>-->
 
 <div style="margin-top:20px;font-size:26px;color:white;"><span style="background-color:white;border-radius:6px;margin:5px;color:orange" id="result"></span></div>
 </div>

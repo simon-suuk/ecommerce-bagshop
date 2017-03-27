@@ -2,6 +2,7 @@
 
 
 <?php
+//this function displays the number of transactions according to a time frame
 if(isset($_REQUEST['cmd'])){
 	
 	include("DatabaseHelper.php");
@@ -13,16 +14,16 @@ if(isset($_REQUEST['cmd'])){
 		$result = $newdat->getDetailsByDay();
 		$newdat->fetchDetailsByDay();
 		
-		//echo "day";
+		//pecho "day";
 	}else if($value==2){
 		$result = $newdat->getDetailsByWeek();
 		$newdat->fetchDetailsByWeek();
-		//echo "month";
+		//echo "week";
 	}else{
 		
 		$result = $newdat->getDetailsByMonth();
 		$newdat->fetchDetailsByMonth();
-		//echo "year";
+		//echo "month";
 	}
 	
 	

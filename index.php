@@ -163,7 +163,7 @@
                     </ul>
 				  </li>
                   <li class="dropdown">
-                    <a href="#" class="active">Admin<i class="fa fa-angle-down"></i></a>
+                    <a href="#">Admin<i class="fa fa-angle-down"></i></a>
                     <ul role="menu" class="sub-menu">
                       <li><a href="shopCustomerAdd.php" class="active" >Add customer</a></li>
                       <li><a href="shopEmployeeAdd.php">Add employee</a></li>
@@ -424,6 +424,42 @@
                         </div>";
                 }
                 ?>
+				
+				<?php
+				
+
+				error_reporting(E_ERROR | E_PARSE);
+                session_start();
+if (isset($_SESSION['visits'])){
+//	$dates= array();
+	
+	$actualdate = date('d-m-y H:i');
+	$storevisits = $_SESSION['visits'];
+	$storeddate =  $_SESSION['date'];
+	if($actualdate!=$storeddate){
+	$_SESSION['date'] = date('d-m-y H:i');
+	$count =1;
+	$_SESSION['visits'] = $count;
+	}else{
+		
+	$count =  $_SESSION['visits'];
+     $count++;
+	 $_SESSION['visits']=$count;
+	}
+    
+	echo "Now the number on ".$_SESSION['date']." with a number of visits of;".$_SESSION['visits'];
+	
+	
+}else{
+	$count=0;
+$_SESSION['visits'] = ++$count;
+//$dates = array();
+$today = date('d-m-y H:i');
+$_SESSION['date'] = $today; 	
+	echo "First time visit on".$_SESSION['date']." with a number of visits of;".$_SESSION['visits'];
+	
+}
+?>
             </div>
             <!--features_items-->
             <div class="category-tab">

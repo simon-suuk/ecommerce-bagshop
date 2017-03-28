@@ -6,7 +6,7 @@ $q=$_GET["q"];
 if (strlen($q)>0) {
 
 $obj = new DatabaseHelper();
-$obj->search($q, 'parts');
+$obj->search($q);
 
 $row=$obj->fetch();
 while($row){
@@ -17,11 +17,5 @@ while($row){
     $row=$obj->fetch();
 }
 }
- /*
-if ($row=="") {
-  $response="no suggestion";
-} else {
-  $response=$row;
-}*/
 
 ?>

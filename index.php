@@ -183,16 +183,15 @@
                   <input type="text" size="30" onkeyup="showResult(this.value)">
                   <div id="livesearch"></div>
                 </form>
-                <?php
+                <!--?php
                   include_once("DatabaseHelper.php");
                   $obj=new DatabaseHelper();
                   if (isset($_REQUEST['search'])) {
-                      $parts='parts';
                       $name=$_REQUEST['search'];
-                      $result=$obj->search($name, $parts);
+                      $result=$obj->search($name);
                   }
                   
-                  ?>
+                  ?-->
               </div>
             </div>
           </div>

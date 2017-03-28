@@ -23,11 +23,10 @@ class DatabaseHelper extends adb{
 		$this->query("CREATE TABLE IF NOT EXISTS $name($query)");
 	}
 	
-	function search($name,$table){
-		if($table=='parts'){
+	function search($name){
 			$strQuery="select pname, price, qno, bno from parts where pname like '%$name%' or price like '%$name%' or qno like '%$name%' or bno like '%$name%' ";
 			return $this-> query($strQuery);
-		}
+		/*}
 		elseif ($table=='customers') {
 			$strQuery="select cname, phone, street, zip from customers where cname like '%$name%' or phone like '%$name%' or street like '%$name%' or zip like '%$name%'  ";
 			return $this-> query($strQuery);
@@ -35,7 +34,7 @@ class DatabaseHelper extends adb{
 		elseif($table=='employees') {
 			$strQuery="select ename, zip from employees where ename like '%$name%' or zip like '%$name%' ";
 			return $this-> query($strQuery);
-		}
+		}*/
 	}
 
 	function addCustomer($name,$street,$zip,$phone){

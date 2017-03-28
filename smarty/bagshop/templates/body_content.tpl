@@ -1,0 +1,148 @@
+  <body>
+	
+		<script>
+      function showResult(str) {
+        if (str.length==0) { 
+          document.getElementById("livesearch").innerHTML="";
+          document.getElementById("livesearch").style.border="0px";
+          return;
+        }
+        if (window.XMLHttpRequest) {
+          // code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp=new XMLHttpRequest();
+        } else {  // code for IE6, IE5
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function() {
+          if (this.readyState==4 && this.status==200) {
+            document.getElementById("livesearch").innerHTML=this.responseText;
+            document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+          }
+        }
+        xmlhttp.open("GET","w3schoolsAJAX.php?q="+str,true);
+        xmlhttp.send();
+      }
+    </script>
+	
+    <header id="header">
+      <!--header-->
+      <div class="header_top">
+        <!--header_top-->
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="contactinfo">
+                <ul class="nav nav-pills">
+                  <li><a href="#"><i class="fa fa-phone"></i> +233541784079</a></li>
+                  <li><a href="#"><i class="fa fa-envelope"></i> bagShop@gmail.com</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="social-icons pull-right">
+                <ul class="nav navbar-nav">
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                  <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/header_top-->
+      <div class="header-middle">
+        <!--header-middle-->
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="logo pull-left">
+                <a href="index.php"><img src="images/home/BagShop.png" alt="" width="130" height="75"/></a>
+              </div>
+              <div class="btn-group pull-right">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                  GHANA
+                  <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">NIGERIA</a></li>
+                    <li><a href="#">UK</a></li>
+                    <li><a href="#">CHINA</a></li>
+                  </ul>
+                </div>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                  GHS
+                  <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Dollar</a></li>
+                    <li><a href="#">Pound</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="shop-menu pull-right">
+                <ul class="nav navbar-nav">
+                  <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                  <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/header-middle-->
+      <div class="header-bottom">
+        <!--header-bottom-->
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-9">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="mainmenu pull-left">
+                <ul class="nav navbar-nav collapse navbar-collapse">
+                  <li><a href="index.php" class="active">Home</a></li>
+                  <!--blog section-->
+                  <li><a href="http://www.purseblog.com/">Blog</a>
+                    
+                  </li>
+					<!--product section-->
+                  <li class="dropdown"><a href="#">Product Report<i class="fa fa-angle-down"></i></a>
+				  <ul role="menu" class="sub-menu">
+                      <li><a href="test101.php" class="active" >Download Report in Pdf</a></li>
+                      <li><a href="report.php">Download Report in CSV</a></li>
+                      <li><a href="product_report.php" >Product Charts</a></li>
+					  </li>
+                    </ul>
+					</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="search_box pull-right">
+                <form>
+                  <input type="text" size="30" onkeyup="showResult(this.value)">
+                  <div id="livesearch"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/header-bottom-->
+    </header><!--/header-->
+	
+		
+		{block name=body}Default Body{/block}
+	
